@@ -354,12 +354,26 @@ require('lazy').setup {
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        pickers = { find_files = { hidden = true } },
+        defaults = { layout_strategy = 'vertical', layout_config = {
+          width = 0.5,
+          height = 0.9,
+        } },
+        pickers = {
+          find_files = {
+            hidden = true,
+            -- no_ignore = true,
+          },
+          live_grep = {
+
+            -- (require 'telescope.themes').get_dropdown { previewer = false }
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
         },
+        -- file_ignore_patterns = { '^node_modules/', '^.git/' },
       }
 
       -- Enable telescope extensions, if they are installed
@@ -413,7 +427,11 @@ require('lazy').setup {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-
+      {
+        'pmizio/typescript-tools.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+        opts = {},
+      },
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
@@ -540,6 +558,7 @@ require('lazy').setup {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
+        --
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -551,7 +570,7 @@ require('lazy').setup {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
-
+        angularls = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes { ...},
@@ -838,9 +857,10 @@ require('lazy').setup {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    config = function()
+    config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
+      local utils = require 'custom.utils'
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
         ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
@@ -850,6 +870,9 @@ require('lazy').setup {
         indent = { enable = true },
       }
 
+      if opts.ensure_installed ~= 'all' then
+        opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, 'angular')
+      end
       -- There are additional nvim-treesitter modules that you can use to interact
       -- with nvim-treesitter. You should go explore a few and see what interests you:
       --
