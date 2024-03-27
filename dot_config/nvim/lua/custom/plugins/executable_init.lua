@@ -47,4 +47,6 @@ return {
   },
   -- { 'm4xshen/autoclose.nvim', opts = {} },
   { 'nvim-tree/nvim-tree.lua', dependencies = { 'nvim-tree/nvim-web-devicons' }, config = {}, opts = { filters = {} } },
+
+  { import = 'custom.plugins.themes.plugins' },
 }

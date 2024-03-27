@@ -6,14 +6,12 @@ return {
     local harpoon = require 'harpoon'
     harpoon:setup {}
 
-    -- require('which-key').register {
-    --   ['<leader>c'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
-    -- }
     for i = 1, 9, 1 do
-      vim.keymap.set('n', '<C-' .. i .. '>', function()
+      vim.keymap.set('n', '<leader>' .. i .. '', function()
         harpoon:list():select(i)
       end)
     end
+
     vim.keymap.set('n', '<leader>h', function()
       harpoon:list():append()
     end)
