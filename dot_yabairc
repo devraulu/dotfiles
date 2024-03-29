@@ -1,0 +1,29 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+yabai -m config external_bar all:0:28
+
+yabai -m config layout                       bsp
+yabai -m config top_padding                  3
+yabai -m config bottom_padding               3
+yabai -m config left_padding                 3
+yabai -m config right_padding                3
+yabai -m config window_gap                   10
+
+# Web browsers
+yabai -m rule --add app="^Google Chrome|Firefox$" space=3
+
+# Text editors
+yabai -m rule --add app="^(Code|RStudio)$" space=2
+
+apps="^(kitty|iTerm 2)$"
+yabai -m rule --add app="${apps}" space=1  manage=off
+
+# Discord
+yabai -m rule --add app="^(Discord|Discord Canary)$" space=5
+
+# Music
+yabai -m rule --add app="^(Spotify|Tidal)$" space=6
+
+# Citrix
+yabai -m rule --add app="^(Citrix Viewer)$" space=7 
