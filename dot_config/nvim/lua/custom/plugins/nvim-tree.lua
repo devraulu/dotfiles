@@ -71,6 +71,7 @@ function custom_on_attach(bufnr)
   -- END_DEFAULT_ON_ATTACH
 end
 
-return {
-  { 'nvim-tree/nvim-tree.lua', dependencies = { 'nvim-tree/nvim-web-devicons' }, opts = { on_attach = custom_on_attach } },
-}
+return { 'nvim-tree/nvim-tree.lua', dependencies = {
+  'nvim-lua/plenary.nvim',
+  'nvim-tree/nvim-web-devicons',
+}, opts = { on_attach = custom_on_attach } }
