@@ -195,3 +195,4 @@ alias cb="xsel --clipboard"
 # Set diff-so-fancy as the default git diff
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 
+alias lg="lazygit"
