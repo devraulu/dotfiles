@@ -2,6 +2,7 @@ return {
   'andweeb/presence.nvim',
   config = function()
     require('presence').setup {
+      nreovim_image_text = 'hjkl',
       show_time = false, -- Show the timer
       enable_line_number = true,
       editing_text = 'Editing a file',

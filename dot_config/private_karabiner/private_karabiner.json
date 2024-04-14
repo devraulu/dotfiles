@@ -18,6 +18,31 @@
                 },
                 "rules": [
                     {
+                        "description": "Shift + Caps Lock (binded to escape) to toggle Caps Locks",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "shift"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "caps_lock",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Virgulilla and tilde switch",
                         "manipulators": [
                             {

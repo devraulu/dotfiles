@@ -48,5 +48,18 @@ return {
   -- { 'm4xshen/autoclose.nvim', opts = {} },
   -- { 'nvim-tree/nvim-tree.lua', dependencies = { 'nvim-tree/nvim-web-devicons' }, config = {}, opts = { filters = {} } },
 
+  { 'nvim-neotest/nvim-nio' },
   { import = 'custom.plugins.themes.plugins' },
+
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    config = function()
+      require('ts_context_commentstring').setup {
+        enable_autocmd = false,
+      }
+      require('Comment').setup {
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      }
+    end,
+  },
 }
