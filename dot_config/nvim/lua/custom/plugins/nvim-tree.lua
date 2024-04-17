@@ -77,6 +77,7 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
   },
+  event = 'BufWinEnter',
   config = function()
     require('nvim-tree').setup {
       on_attach = custom_on_attach,

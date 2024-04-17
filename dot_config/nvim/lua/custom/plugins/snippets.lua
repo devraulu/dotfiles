@@ -15,6 +15,8 @@ return {
     -- friendly-snippets - enable standardized comments snippets
     require('luasnip').filetype_extend('typescript', { 'tsdoc' })
     require('luasnip').filetype_extend('javascript', { 'jsdoc' })
+    require('luasnip').filetype_extend('javascriptreact', { 'jsdoc' })
+    require('luasnip').filetype_extend('typescriptreact', { 'tsdoc' })
     require('luasnip').filetype_extend('lua', { 'luadoc' })
     require('luasnip').filetype_extend('python', { 'pydoc' })
     require('luasnip').filetype_extend('rust', { 'rustdoc' })
