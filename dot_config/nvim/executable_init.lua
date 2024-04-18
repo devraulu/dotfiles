@@ -238,11 +238,11 @@ require('lazy').setup {
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  {
-    'numToStr/Comment.nvim',
-    name = 'Comment',
-    opts = {},
-  },
+  -- {
+  --   'numToStr/Comment.nvim',
+  --   name = 'Comment',
+  --   opts = {},
+  -- },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following lua:
@@ -563,7 +563,7 @@ require('lazy').setup {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         --
         -- gopls = {},
         -- pyright = {},
@@ -651,7 +651,10 @@ require('lazy').setup {
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { 'prettierd', 'prettier' } },
+        javascriptreact = { { 'prettierd', 'prettier' } },
+        typescript = { { 'prettierd', 'prettier' } },
+        typescriptreact = { { 'prettierd', 'prettier' } },
       },
     },
   },

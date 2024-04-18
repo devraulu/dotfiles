@@ -50,7 +50,7 @@ return {
 
   { 'nvim-neotest/nvim-nio' },
   { import = 'custom.plugins.themes.plugins' },
-
+  { 'b3nj5m1n/kommentary' },
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
     config = function()
@@ -58,9 +58,16 @@ return {
         enable_autocmd = false,
       }
 
-      require('Comment').setup {
-        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-      }
+      require('kommentary.config').configure_language('default', {
+        single_line_comment_string = 'auto',
+        multi_line_comment_strings = 'auto',
+        hook_function = function()
+          require('ts_context_commentstring').update_commentstring()
+        end,
+      })
+      -- require('Comment').setup {
+      --   pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      -- }
     end,
   },
 }
