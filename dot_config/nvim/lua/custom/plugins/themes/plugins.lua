@@ -156,8 +156,10 @@ return {
       },
     },
     config = function(_, opts)
-      require('rose-pine').setup {}
-      vim.cmd [[colorscheme rose-pine-moon]]
+      require('rose-pine').setup {
+        styles = { transparency = true },
+      }
+      vim.cmd [[colorscheme rose-pine]]
     end,
   },
 }

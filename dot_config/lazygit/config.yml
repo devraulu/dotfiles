@@ -1,7 +1,8 @@
-
+gui:
+  nerdFontsVersion: "3"
 git:
   paging:
     colorArg: always
-    pager: diff-so-fancy
-gui:
-  nerdFontsVersion: "3"
+    useConfig: true 
+os:
+  editPreset: "nvim"

@@ -4,7 +4,7 @@ return {
   config = function()
     -- vim.o.laststatus = 2
     vim.g.lightline = {
-      colorscheme = 'wombat',
+      colorscheme = 'PaperColor',
       mode_map = {
         ['n'] = 'N',
         ['no'] = 'N·P',

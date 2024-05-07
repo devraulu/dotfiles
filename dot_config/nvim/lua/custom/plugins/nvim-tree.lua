@@ -82,6 +82,7 @@ return {
     require('nvim-tree').setup {
       on_attach = custom_on_attach,
       filters = { dotfiles = false },
+      view = { side = 'right' },
     }
   end,
 }

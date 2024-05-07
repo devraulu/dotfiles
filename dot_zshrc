@@ -70,7 +70,7 @@ eval "$(starship init zsh)"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode z tmux zsh-syntax-highlighting zsh-autosuggestions nvm)
+plugins=(git vi-mode tmux fzf-tab zsh-syntax-highlighting zsh-autosuggestions nvm)
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
@@ -162,16 +162,11 @@ ex ()
   fi
 }
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Load Angular CLI autocompletion.
-# source <(ng completion script)
+source <(ng completion script)
 
 # Discord
 # alias discord="nohup /usr/local/bin/Discord/Discord &"
-#
 
 # NODE
 export NODE_OPTIONS="--max-old-space-size=8192"
@@ -189,21 +184,9 @@ alias cb="xsel --clipboard"
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 
 alias lg="lazygit"
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# pnpm
-export PNPM_HOME="/Users/visual/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 # Created by `pipx` on 2024-03-30 23:20:02
-export PATH="$PATH:/Users/visual/.local/bin"
-
-eval "$(register-python-argcomplete pipx)"
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+# export PATH="$PATH:/Users/visual/.local/bin"
 
 # 1Password
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
@@ -211,10 +194,30 @@ export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agen
 # NODE
 export NODE_OPTIONS=--max_old_space_size=4096
 
-export PGPORT=5435
+# export PGPORT=5435
 
 # VSCODE
 export PATH="$PATH:/Users/visual/code-insiders"
 alias code="code-insiders"
 
-alias ctc="Users/visual/ctc"
+source /usr/share/nvm/init-nvm.sh
+
+# pnpm
+export PNPM_HOME="/Users/visual/.pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export TERM="kitty"
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+export DOWNGRADE_FROM_ALA=1
+
+# replace cat with bat
+alias cat="bat"
