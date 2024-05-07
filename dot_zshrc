@@ -188,9 +188,6 @@ alias lg="lazygit"
 # Created by `pipx` on 2024-03-30 23:20:02
 # export PATH="$PATH:/Users/visual/.local/bin"
 
-# 1Password
-export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
-
 # NODE
 export NODE_OPTIONS=--max_old_space_size=4096
 
@@ -206,7 +203,7 @@ source /usr/share/nvm/init-nvm.sh
 export PNPM_HOME="/Users/visual/.pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *) export PATH="$PNPM_export SSH_AUTH_SOCK=~/.1password/agent.sockHOME:$PATH" ;;
 esac
 # pnpm end
 
@@ -221,3 +218,7 @@ export DOWNGRADE_FROM_ALA=1
 
 # replace cat with bat
 alias cat="bat"
+
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+
+export EDITOR=nvim
