@@ -70,7 +70,7 @@ eval "$(starship init zsh)"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode tmux fzf-tab zsh-syntax-highlighting zsh-autosuggestions nvm)
+plugins=(git vi-mode tmux fzf-tab zsh-syntax-highlighting zsh-autosuggestions)
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
@@ -111,65 +111,15 @@ alias vi="nvim"
 alias vim="nvim"
 alias avim="NVIM_APPNAME=astronvim nvim"
 
-
-
-# CLion
-# export PATH="/opt/clion/bin:$PATH"
-# alias clion="nohup clion &"
-
-# Rider
-# export PATH="/opt/rider/bin:$PATH"
-# alias rider="rider nosplash"
-#
-# export PATH="~/.local/share/JetBrains/Toolbox/scripts:$PATH"
-
 export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
-
-# bun completions
-[ -s "/home/visual/.bun/_bun" ] && source "/home/visual/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# dotnet
-export DOTNET_ROOT=$HOME/.dotnet
-export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
-# # ex - archive extractor
-# # usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-
 # Load Angular CLI autocompletion.
-source <(ng completion script)
-
-# Discord
-# alias discord="nohup /usr/local/bin/Discord/Discord &"
+# source <(ng completion script)
 
 # NODE
-export NODE_OPTIONS="--max-old-space-size=8192"
+export NODE_OPTIONS=--max-old-space-size=8192
 
 # Termbin
 alias tb="nc termbin.com 9999"
@@ -180,18 +130,7 @@ alias -- -="cd -"
 # Clipboard
 alias cb="xsel --clipboard"
 
-# Set diff-so-fancy as the default git diff
-git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-
 alias lg="lazygit"
-
-# Created by `pipx` on 2024-03-30 23:20:02
-# export PATH="$PATH:/Users/visual/.local/bin"
-
-# NODE
-export NODE_OPTIONS=--max_old_space_size=4096
-
-# export PGPORT=5435
 
 # VSCODE
 export PATH="$PATH:/Users/visual/code-insiders"
@@ -222,3 +161,5 @@ alias cat="bat"
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 
 export EDITOR=nvim
+
+export XDG_CONFIG_HOME="$HOME/.config"

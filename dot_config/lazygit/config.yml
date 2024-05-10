@@ -1,8 +1,33 @@
 gui:
   nerdFontsVersion: "3"
+  theme:
+    activeBorderColor:
+      - "#00FF00" # Bright Green
+    inactiveBorderColor:
+      - "#F0F0F0" # Light Gray
+    searchingActiveBorderColor:
+      - "#00FFFF" # Cyan
+    optionsTextColor:
+      - "#0000FF" # Blue
+    selectedLineBgColor:
+      - "#ADD8E6" # Light Blue
+    cherryPickedCommitBgColor:
+      - "#87CEEB" # Light Sky Blue
+    cherryPickedCommitFgColor:
+      - "#0000FF" # Blue
+    unstagedChangesColor:
+      - "#FF4500" # Orange Red
+    defaultFgColor:
+      - default
 git:
   paging:
-    colorArg: always
-    useConfig: true 
+    #  colorArg: always
+    #  useConfig: true 
+    
+    colorArg: never
+    pager: ydiff -p cat -s --wrap --width={{columnWidth}}
+    
+    # colorArg: always
+    # pager: delta --dark --paging=never
 os:
   editPreset: "nvim"

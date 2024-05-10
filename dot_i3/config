@@ -9,11 +9,12 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 3
-default_floating_border pixel
+# default_border pixel 3
+default_border none
+# default_floating_border pixel
 
 # Hide borders
-hide_edge_borders none
+hide_edge_borders both
 
 # change borders
 bindsym $mod+u border none
@@ -22,7 +23,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Google Sans Display 11
+font pango:Google Sans Display 12
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -282,8 +283,11 @@ bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec_always --no-startup-id feh --bg-fill ~/wallpapers/guts_resting.jpg
+# exec --no-startup-id xwallpaper --daemon --zoom ~/wallpapers/3840px-Rosa_Bonheur,_The_Horse_Fair,_1852–55.jpg
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id sleep 1; picom -b
-exec_always --no-startup-id feh --bg-fill ~/wallpapers/guts_resting.jpg
 
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
@@ -366,17 +370,18 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 
-set $primary_bg #5a565c
+set $primary_bg #fff68d
 set $secondary_bg #6f6770
 set $tertiary_bg #3c383d
-set $text_color #f3f3f4
+set $text_color #1b1d1e
+set $secondary_text_color #fff68d
 
 
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 $primary_bg  $text_color #FDF6E3
-  client.focused_inactive #2F3D44 $secondary_bg $text_color #454948
-  client.unfocused        #2F3D44 $tertiary_bg $text_color #454948
-  client.urgent           #CB4B16 #FDF6E3 #FFFFFF #268BD2
+  client.focused          $primary_bg $primary_bg  $text_color #FDF6E3
+  client.focused_inactive $secondary_bg $secondary_bg $secondary_text_color #454948
+  client.unfocused        $tertiary_bg $tertiary_bg $secondary_text_color #454948
+  client.urgent           #FDF6E3 #FF4500 #1b1d1e #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
   client.background       #2B2C2B
@@ -386,9 +391,9 @@ set $text_color #f3f3f4
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
-gaps outer -2
-gaps bottom 26
+gaps inner 16
+# gaps outer -2
+gaps bottom 28
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -396,11 +401,11 @@ gaps bottom 26
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps off 
+# smart_gaps off 
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+# smart_borders no_gaps
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -456,7 +461,6 @@ exec --no-startup-id udiskie -s
 
 # for_window [all] title_window_icon padding 5px
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 include ~/.i3/config.d/*.conf
 
