@@ -132,6 +132,8 @@ alias cb="xsel --clipboard"
 
 alias lg="lazygit"
 
+alias ll="ls -alh"
+
 # VSCODE
 export PATH="$PATH:/Users/visual/code-insiders"
 alias code="code-insiders"

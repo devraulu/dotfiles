@@ -38,6 +38,10 @@ return {
       -- online, please don't ask me how to install them :)
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
+        -- 'javascript',
+        -- 'go',
+        -- 'typescript',
+        -- 'rust',
         'delve',
       },
     }
@@ -77,11 +81,71 @@ return {
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
 
+    dap.listeners.before.attach['dapui_config'] = dapui.open
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     -- Install golang specific config
     require('dap-go').setup()
+
+    dap.adapters.gdb = {
+      type = 'executable',
+      command = 'gdb',
+      args = { '-i', 'dap' },
+    }
+
+    dap.configurations.c = {
+      {
+        name = 'Launch',
+        type = 'gdb',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopAtBeginningOfMainSubprogram = false,
+      },
+    }
+
+    dap.configurations.cpp = dap.configurations.c
+    dap.configurations.rust = dap.configurations.c
+
+    dap.adapters.firefox = {
+      type = 'executable',
+      command = 'node',
+      args = { os.getenv 'HOME' .. '/home/visual/.dap/vscode-firefox-debug/dist/adapter.bundle.js' },
+    }
+
+    dap.adapters['pwa-node'] = {
+      type = 'server',
+      host = 'localhost',
+      port = '${port}',
+      executable = {
+        command = 'node',
+        -- 💀 Make sure to update this path to point to your installation
+        args = { '/home/visual/.dap/js-debug/src/dapDebugServer.js', '${port}' },
+      },
+    }
+
+    dap.configurations.typescript = {
+      {
+        name = 'Debug with Firefox',
+        type = 'firefox',
+        request = 'launch',
+        reAttach = true,
+        url = 'http://localhost:3000',
+        webRoot = '${workspaceFolder}',
+        firefoxExecutable = '/usr/bin/firefox',
+      },
+      {
+        type = 'pwa-node',
+        request = 'launch',
+        name = 'Launch file',
+        program = '${file}',
+        cwd = '${workspaceFolder}',
+      },
+    }
+    dap.configurations.javascript = dap.configurations.typescript
   end,
 }

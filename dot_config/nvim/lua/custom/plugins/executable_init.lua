@@ -77,7 +77,7 @@ return {
       -- }
     end,
   },
-  { 'pechorin/any-jump.vim' },
+  -- { 'pechorin/any-jump.vim' },
   { 'tpope/vim-fugitive' },
   { 'sindrets/diffview.nvim' },
 }

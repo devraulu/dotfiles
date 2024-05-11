@@ -284,7 +284,7 @@ bindsym $mod+9 exec --no-startup-id blurlock
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec_always --no-startup-id feh --bg-fill ~/wallpapers/guts_resting.jpg
-# exec --no-startup-id xwallpaper --daemon --zoom ~/wallpapers/3840px-Rosa_Bonheur,_The_Horse_Fair,_1852–55.jpg
+exec --no-startup-id xwallpaper --daemon --zoom ~/wallpapers/nerv.png
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id sleep 1; picom -b
@@ -301,6 +301,8 @@ exec --no-startup-id clipit
 exec --no-startup-id xautolock -time 30 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec --no-startup-id 1password --silent
+exec --no-startup-id udiskie -s 
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -457,10 +459,8 @@ for_window [title="^Picture in picture$"] floating enable, sticky enable, border
 # Execute the script on startup
 exec ./scripts/pip_follow.sh & 
 
-exec --no-startup-id udiskie -s 
 
 # for_window [all] title_window_icon padding 5px
-
 
 include ~/.i3/config.d/*.conf
 
