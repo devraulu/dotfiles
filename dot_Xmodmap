@@ -248,6 +248,6 @@
 ! keycode 255 = XF86RFKill NoSymbol XF86RFKill
 
 ! custom keymaps
-clear Lock
-keycode 66 = Escape Caps_Lock
+! clear Lock
+! keycode 66 = Escape Caps_Lock
 keycode 105 = asciitilde grave 

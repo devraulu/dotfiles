@@ -15,7 +15,7 @@ eval "$(starship init zsh)"
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
+#
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -140,16 +140,6 @@ alias code="code-insiders"
 
 source /usr/share/nvm/init-nvm.sh
 
-# pnpm
-export PNPM_HOME="/Users/visual/.pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_export SSH_AUTH_SOCK=~/.1password/agent.sockHOME:$PATH" ;;
-esac
-# pnpm end
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 export TERM="kitty"
 
 # zoxide
@@ -165,3 +155,17 @@ export SSH_AUTH_SOCK=~/.1password/agent.sock
 export EDITOR=nvim
 
 export XDG_CONFIG_HOME="$HOME/.config"
+
+alias info="info --vi-keys"
+
+# pnpm
+export PNPM_HOME="/home/visual/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+#
+#
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

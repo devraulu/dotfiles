@@ -447,7 +447,7 @@ require('lazy').setup {
         --
         -- gopls = {},
         -- pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -456,6 +456,7 @@ require('lazy').setup {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
+        astro = {},
         angularls = {},
         lua_ls = {
           -- cmd = {...},
@@ -537,6 +538,7 @@ require('lazy').setup {
         typescriptreact = { { 'prettierd', 'prettier' } },
         html = { { 'prettierd', 'prettier' } },
         css = { { 'prettied', 'prettier' } },
+        astro = { { 'prettierd', 'prettier' } },
       },
     },
   },
@@ -747,6 +749,7 @@ require('lazy').setup {
 
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    dependencies = { 'virchau13/tree-sitter-astro' },
     build = ':TSUpdate',
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -754,16 +757,18 @@ require('lazy').setup {
       local utils = require 'custom.utils'
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
+        -- ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'astro', 'angular', 'css', 'scss', 'rust', 'typescript', 'yaml', 'toml' },
+        ensure_installed = 'all',
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
       }
 
-      if opts.ensure_installed ~= 'all' then
-        opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, 'angular')
-      end
+      -- if opts.ensure_installed ~= 'all' then
+      --   opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, 'angular')
+      --   opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, 'astro')
+      -- end
       -- There are additional nvim-treesitter modules that you can use to interact
       -- with nvim-treesitter. You should go explore a few and see what interests you:
       --
