@@ -370,6 +370,8 @@ require('lazy').setup {
           -- map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
           -- map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
+          map('gd', fzf.lsp_definitions, '[G]oto [D]efinition')
+
           -- Find references for the word under your cursor.
           map('gr', fzf.lsp_references, '[G]oto [R]eferences')
 
@@ -404,7 +406,9 @@ require('lazy').setup {
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          --
+          -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('gD', fzf.lsp_declarations, '[G]oto [D]eclaration')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -759,6 +763,7 @@ require('lazy').setup {
       require('nvim-treesitter.configs').setup {
         -- ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'astro', 'angular', 'css', 'scss', 'rust', 'typescript', 'yaml', 'toml' },
         ensure_installed = 'all',
+        ignore_installed = { 'typescript', 'javascript' },
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },

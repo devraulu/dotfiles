@@ -1,0 +1,21 @@
+lastupdatecheck: 0
+recentrepos:
+- /home/visual/work/sucal/cert-lab-web
+- /home/visual/work/sucal/backend/integraciones
+- /home/visual/work/sucal/backend/personas
+- /home/visual/.local/share/chezmoi
+- /home/visual/work/sucal/backend/administracion
+- /home/visual/work/sucal/backend/lic-conducir
+- /home/visual/work/sucal/backend/visitas
+startuppopupversion: 5
+lastversion: 0.41.0
+customcommandshistory:
+- q
+- w
+hidecommandlog: false
+ignorewhitespaceindiffview: true
+diffcontextsize: 3
+localbranchsortorder: recency
+remotebranchsortorder: alphabetical
+gitlogorder: topo-order
+gitlogshowgraph: always

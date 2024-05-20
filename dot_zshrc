@@ -148,7 +148,7 @@ eval "$(zoxide init zsh)"
 export DOWNGRADE_FROM_ALA=1
 
 # replace cat with bat
-alias cat="bat"
+# alias cat="bat"
 
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 
@@ -165,7 +165,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-#
-#
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
