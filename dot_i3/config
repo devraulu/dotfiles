@@ -35,8 +35,8 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_extended_run 
-bindsym $mod+Shift+d exec --no-startup-id "rofi -show combi -modes combi -combi-modes 'window,drun,run'"
+bindsym $mod+Shift+d exec dmenu_extended_run 
+bindsym $mod+d exec "rofi -show combi -modes combi -combi-modes 'window,drun,run'"
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -72,7 +72,7 @@ bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+question exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
-# focus_follows_mouse no
+focus_follows_mouse no
 
 # change focus
 bindsym $mod+h focus left
@@ -289,14 +289,14 @@ mode "resize" {
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec_always --no-startup-id feh --bg-fill ~/wallpapers/guts_resting.jpg
-exec_always --no-startup-id xwallpaper --daemon --zoom ~/wallpapers/nerv.png
+exec_always  xwallpaper --daemon --zoom ~/wallpapers/nerv.png
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id sleep 1; picom -b
+exec sleep 1; picom -b
 
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
@@ -309,6 +309,8 @@ exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id autotiling --limit 2
 exec --no-startup-id 1password --silent
 exec --no-startup-id udiskie -s 
+
+bindsym button1 nop
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

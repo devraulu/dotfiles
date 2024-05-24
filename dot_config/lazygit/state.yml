@@ -1,17 +1,17 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/visual/work/sucal/cert-lab-web
-- /home/visual/work/sucal/backend/integraciones
-- /home/visual/work/sucal/backend/personas
-- /home/visual/.local/share/chezmoi
-- /home/visual/work/sucal/backend/administracion
-- /home/visual/work/sucal/backend/lic-conducir
-- /home/visual/work/sucal/backend/visitas
+    - /home/visual/work/sucal/backend/personas
+    - /home/visual/work/sucal/cert-lab-web
+    - /home/visual/work/sucal/backend/administracion
+    - /home/visual/work/sucal/backend/integraciones
+    - /home/visual/.local/share/chezmoi
+    - /home/visual/work/sucal/backend/lic-conducir
+    - /home/visual/work/sucal/backend/visitas
 startuppopupversion: 5
-lastversion: 0.41.0
+lastversion: 0.42.0
 customcommandshistory:
-- q
-- w
+    - w
+    - q
 hidecommandlog: false
 ignorewhitespaceindiffview: true
 diffcontextsize: 3

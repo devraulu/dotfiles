@@ -81,7 +81,7 @@ return {
   config = function()
     require('nvim-tree').setup {
       on_attach = custom_on_attach,
-      filters = { dotfiles = false },
+      filters = { git_ignored = false, dotfiles = false },
       view = { side = 'right' },
     }
   end,
