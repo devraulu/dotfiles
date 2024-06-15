@@ -1,12 +1,14 @@
 lastupdatecheck: 0
 recentrepos:
-    - /home/visual/work/sucal/backend/personas
-    - /home/visual/work/sucal/cert-lab-web
-    - /home/visual/work/sucal/backend/administracion
-    - /home/visual/work/sucal/backend/integraciones
-    - /home/visual/.local/share/chezmoi
-    - /home/visual/work/sucal/backend/lic-conducir
-    - /home/visual/work/sucal/backend/visitas
+    - /home/solo/work/sucal/cert-lab-web
+    - /home/solo/work/sucal/backend/personas
+    - /home/solo/work/sucal/backend/lic-conducir
+    - /home/solo/work/sucal/backend/comunes
+    - /home/solo/development/angular/angular-course
+    - /home/solo/work/sucal/backend/empresas
+    - /home/solo/work/sucal/backend/vehiculos
+    - /home/solo/work/sucal/backend/integraciones
+    - /home/solo/Downloads/dmenu
 startuppopupversion: 5
 lastversion: 0.42.0
 customcommandshistory:
@@ -16,6 +18,6 @@ hidecommandlog: false
 ignorewhitespaceindiffview: true
 diffcontextsize: 3
 localbranchsortorder: recency
-remotebranchsortorder: alphabetical
+remotebranchsortorder: date
 gitlogorder: topo-order
 gitlogshowgraph: always

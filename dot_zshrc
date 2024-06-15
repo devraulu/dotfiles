@@ -75,15 +75,16 @@ plugins=(git vi-mode tmux fzf-tab zsh-syntax-highlighting zsh-autosuggestions)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+fpath+=${CUSTOM_ZSH_COMPLETIONS:-~}/completions
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -135,7 +136,7 @@ alias lg="lazygit"
 alias ll="ls -alh"
 
 # VSCODE
-export PATH="$PATH:/Users/visual/code-insiders"
+export PATH="$PATH:/Users/solo/code-insiders"
 alias code="code-insiders"
 
 source /usr/share/nvm/init-nvm.sh
@@ -158,13 +159,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 alias info="info --vi-keys"
 
-# pnpm
-export PNPM_HOME="/home/visual/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -211,8 +205,23 @@ _fzf_compgen_dir() {
 # export FZF_DEFAULT_OPTS='--walker file,dir,follow,hidden'
 
 # Created by `pipx` on 2024-05-21 06:19:43
-export PATH="$PATH:/home/visual/.local/bin"
+export PATH="$PATH:/home/solo/.local/bin"
 
 eval "$(register-python-argcomplete pipx)"
 
+
+
+# pnpm
+export PNPM_HOME="/home/solo/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+alias z="zi"
 

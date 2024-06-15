@@ -1,3 +1,12 @@
+[character]
+success_symbol = '[󰫢 ](bold blue)'
+error_symbol = '[󰫢 ](bold red)'
+vimcmd_symbol = '[󰫣 ](bold purple)'
+vimcmd_replace_one_symbol = '[󰫣 ](bold blue)'
+vimcmd_replace_symbol = '[󰫣 ](bold purple)'
+vimcmd_visual_symbol = '[󰫣 ](bold purple)'
+
+
 [aws]
 symbol = "  "
 

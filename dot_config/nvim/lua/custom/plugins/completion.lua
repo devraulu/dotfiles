@@ -23,6 +23,8 @@ return { -- Autocompletion
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/cmp-nvim-lsp-signature-help',
     -- If you want to add a bunch of pre-configured snippets,
     --    you can use this plugin to help you. It even has snippets
     --    for various frameworks/libraries/etc. but you will have to
@@ -78,7 +80,9 @@ return { -- Autocompletion
         { name = 'friendly-snippets' },
         { name = 'path' },
         { name = 'nvim_lsp_signature_help' },
-      }, { { name = 'buffer' } }),
+      }, {
+        { name = 'buffer' },
+      }),
     }
 
     cmp.setup.cmdline('/', {

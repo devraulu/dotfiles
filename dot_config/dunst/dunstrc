@@ -1,7 +1,7 @@
 [global]
     frame_width = 2
-    frame_color = "#f3fd2a"
-    font = Google Sans 11
+    frame_color = ""
+    font = Geist Nerd Font 12
     
     # Allow a small subset of html markup:
       # <b>bold</b>
@@ -183,7 +183,7 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#373B41"
+    background = "#1e1e2e"
     foreground = "#eee"
     timeout = 10
 
