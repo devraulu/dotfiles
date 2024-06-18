@@ -225,3 +225,4 @@ source <(ng completion script)
 
 alias z="zi"
 
+alias rcp="rsync -a --info=progress2"
