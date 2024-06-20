@@ -20,7 +20,10 @@ return { -- Autoformat
         scss = { { 'prettierd', 'prettier' } },
         sass = { { 'prettierd', 'prettier' } },
         astro = { { 'prettierd', 'prettier' } },
+        json = { 'prettierd' },
         rust = { 'rustfmt' },
+        yaml = { 'yamlfix' },
+        toml = { 'taplo' },
       },
     }
 
