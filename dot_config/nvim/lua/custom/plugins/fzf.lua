@@ -4,9 +4,14 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     -- calling `setup` is optional for customization
-    require('fzf-lua').setup { lsp = {
-      async_or_timeout = true,
-    } }
+    require('fzf-lua').setup {
+      lsp = {
+        async_or_timeout = true,
+      },
+      diagnostics = {
+        winopts = { preview = { layout = 'vertical' } },
+      },
+    }
 
     local fzf = require 'fzf-lua'
 
@@ -21,7 +26,10 @@ return {
     vim.keymap.set('n', '<leader>s.', fzf.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', fzf.buffers, { desc = '[ ] Find existing buffers' })
     vim.keymap.set('n', '<leader>/', fzf.lgrep_curbuf, { desc = '[/] Fuzzily search in current buffer' })
+    vim.keymap.set({ 'n', 'v', 'i' }, '<C-x><C-f>', function()
+      require('fzf-lua').complete_path()
+    end, { silent = true, desc = 'Fuzzy complete path' })
 
-    fzf.register_ui_select();
+    fzf.register_ui_select()
   end,
 }

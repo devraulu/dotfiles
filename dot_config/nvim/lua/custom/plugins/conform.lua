@@ -24,6 +24,7 @@ return { -- Autoformat
         rust = { 'rustfmt' },
         yaml = { 'yamlfix' },
         toml = { 'taplo' },
+        sql = { 'sql_formatter' },
       },
     }
 
