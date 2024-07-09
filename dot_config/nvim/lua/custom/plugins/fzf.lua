@@ -11,6 +11,12 @@ return {
       diagnostics = {
         winopts = { preview = { layout = 'vertical' } },
       },
+      files = {
+        winopts = { preview = { layout = 'vertical', vertical = 'down:65%' } },
+      },
+      live_grep_native = {
+        winopts = { preview = { layout = 'vertical', vertical = 'down:65%' } },
+      },
     }
 
     local fzf = require 'fzf-lua'

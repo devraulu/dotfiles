@@ -79,6 +79,6 @@ return {
     --
     vim.keymap.set('n', '<leader>-', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
-    end)
+    end, { desc = 'Open harpoon window' })
   end,
 }
