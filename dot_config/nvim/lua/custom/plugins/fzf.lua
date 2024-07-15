@@ -5,18 +5,18 @@ return {
   config = function()
     -- calling `setup` is optional for customization
     require('fzf-lua').setup {
+
+      winopts = { preview = { layout = 'vertical', vertical = 'down:65%' } },
       lsp = {
         async_or_timeout = true,
       },
-      diagnostics = {
-        winopts = { preview = { layout = 'vertical' } },
-      },
-      files = {
-        winopts = { preview = { layout = 'vertical', vertical = 'down:65%' } },
-      },
-      live_grep_native = {
-        winopts = { preview = { layout = 'vertical', vertical = 'down:65%' } },
-      },
+      -- diagnostics = {
+      --   winopts = { preview = { layout = 'vertical' } },
+      -- },
+      -- files = {
+      --   winopts = { preview = { layout = 'vertical', vertical = 'down:65%' } },
+      -- },
+      live_grep_native = {},
     }
 
     local fzf = require 'fzf-lua'

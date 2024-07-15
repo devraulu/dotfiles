@@ -33,6 +33,9 @@ vim.keymap.set('n', '<space>qs', '<cmd>conf xall<CR>', { desc = 'Confirm [save] 
 
 require('ibl').setup {}
 
+-- Folding
+vim.opt.foldmethod = 'indent'
+
 return {
   { 'lambdalisue/suda.vim' },
 
