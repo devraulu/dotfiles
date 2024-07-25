@@ -195,7 +195,7 @@
 [urgency_critical]
     background = "#D61729"
     foreground = "#F9FAF9"
-    timeout = 0
+    timeout = 15
 
 
 # Every section that isn't one of the above is interpreted as a rules to
@@ -273,6 +273,8 @@
 #    background = "#A8EB41"
 #    foreground = "#FFFFFF"
 #
+[telegram]
+
 [irc]
         appname = weechat
         timeout = 0
