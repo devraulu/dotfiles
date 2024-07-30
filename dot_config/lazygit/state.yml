@@ -1,6 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
+    - /home/visual/work/sucal/backend/visitas
     - /home/visual/work/sucal/cert-lab-web
+    - /home/visual/work/sucal/backend/vehiculos
+    - /home/visual/work/sucal/backend/empresas
+    - /home/visual/work/sucal/backend/lic-conducir
     - /home/visual/.local/share/chezmoi
 startuppopupversion: 5
 lastversion: 0.43.1

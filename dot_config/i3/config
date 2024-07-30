@@ -36,7 +36,8 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 # bindsym $mod+Shift+r exec "rofi -show combi -modes combi -combi-modes 'window,drun,run'"
-bindsym $mod+d exec "j4dd"
+bindsym $mod+d exec "j4-dmenu-desktop"
+# bindsym $mod+d exec "./scripts/j4dd"
 
 bindsym $mod+Mod1+p exec flameshot gui
 
