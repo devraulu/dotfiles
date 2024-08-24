@@ -7,15 +7,20 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "languages": {
+    "Rust": {
+      "show_inline_completions": false
+    }
+  },
   "base_keymap": "VSCode",
   "features": {
     "copilot": true
   },
   "vim_mode": true,
-  "theme": "Rosé Pine",
-  "buffer_font_family": "GeistMonoNF-Medium",
+  "theme": "Rosé Pine Moon",
+  "buffer_font_family": "GeistMono Nerd Font",
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "relative_line_numbers": true,
-  "format_on_save": true
+  "format_on_save": "off"
 }

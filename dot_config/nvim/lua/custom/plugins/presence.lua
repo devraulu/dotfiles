@@ -1,18 +1,18 @@
 return {
-  'andweeb/presence.nvim',
-  config = function()
-    require('presence').setup {
-      nreovim_image_text = 'hjkl',
-      show_time = false, -- Show the timer
-      enable_line_number = true,
-      editing_text = 'Editing a file',
-      file_explorer_text = 'Browsing files',
-      git_commit_text = 'Committing changes',
-      plugin_manager_text = 'Managing plugins',
-      reading_text = 'Reading a file',
-      workspace_text = 'Working on %s',
-    }
-  end,
+  -- 'andweeb/presence.nvim',
+  -- config = function()
+  --   require('presence').setup {
+  --     nreovim_image_text = 'hjkl',
+  --     show_time = false, -- Show the timer
+  --     enable_line_number = true,
+  --     editing_text = 'Editing a file',
+  --     file_explorer_text = 'Browsing files',
+  --     git_commit_text = 'Committing changes',
+  --     plugin_manager_text = 'Managing plugins',
+  --     reading_text = 'Reading a file',
+  --     workspace_text = 'Working on %s',
+  --   }
+  -- end,
 }
 -- return {
 --   'IogaMaster/neocord',

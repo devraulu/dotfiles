@@ -2,21 +2,21 @@ return {
   --
   -- --
   -- {
-  --   'catppuccin/nvim',
-  --   name = 'catppuccin',
-  --   priority = 1000,
-  --   config = function()
-  --     require('catppuccin').setup {
-  --       integrations = {
-  --         treesitter = true,
-  --         native_lsp = { enabled = true, styles = { variables = 'italic' } },
-  --         leap = true,
-  --         indent_blankline = { enabled = true },
-  --       },
-  --     }
-  --     vim.cmd [[colorscheme catppuccin]]
-  --     vim.g.lightline = { colorscheme = 'catppuccin' }
-  --   end,
+  'catppuccin/nvim',
+  name = 'catppuccin',
+  priority = 1000,
+  config = function()
+    require('catppuccin').setup {
+      integrations = {
+        treesitter = true,
+        native_lsp = { enabled = true, styles = { variables = 'italic' } },
+        leap = true,
+        indent_blankline = { enabled = true },
+      },
+    }
+    vim.cmd [[colorscheme catppuccin]]
+    vim.g.lightline = { colorscheme = 'catppuccin' }
+  end,
   -- },
   -- -- { 'dracula/vim', as = 'dracula' },
   -- -- { 'projekt0n/github-nvim-theme' },
@@ -147,19 +147,19 @@ return {
   --     vim.cmd [[colorscheme kanagawa]]
   --   end,
   -- },
-  {
-    'rose-pine/neovim',
-    name = 'rose-pine',
-    opts = {
-      styles = {
-        transparency = true,
-      },
-    },
-    config = function(_, opts)
-      require('rose-pine').setup {
-        styles = { transparency = true },
-      }
-      vim.cmd [[colorscheme rose-pine]]
-    end,
-  },
+  -- {
+  --   'rose-pine/neovim',
+  --   name = 'rose-pine',
+  --   opts = {
+  --     styles = {
+  --       transparency = true,
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     require('rose-pine').setup {
+  --       styles = { transparency = true },
+  --     }
+  --     vim.cmd [[colorscheme rose-pine]]
+  --   end,
+  -- },
 }

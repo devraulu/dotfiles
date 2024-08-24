@@ -75,7 +75,8 @@ eval "$(starship init zsh)"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 fpath+=${CUSTOM_ZSH_COMPLETIONS:-~}/completions
 
-source /usr/share/zsh/share/antigen.zsh
+# source /usr/share/zsh/share/antigen.zsh
+source /home/linuxbrew/.linuxbrew/share/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
@@ -139,7 +140,7 @@ export NODE_OPTIONS=--max-old-space-size=8192
 alias tb="nc termbin.com 9999"
 
 # Go back
-alias -- -="cd -"
+# alias -- -="cd -"
 
 # Clipboard
 alias cb="xsel --clipboard"
@@ -148,7 +149,11 @@ alias lg="lazygit"
 
 alias ll="ls -alh"
 
-source /usr/share/nvm/init-nvm.sh
+# source /usr/share/nvm/init-nvm.sh
+
+ export NVM_DIR="$HOME/.nvm"
+  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export TERM="kitty"
 
@@ -212,20 +217,18 @@ _fzf_compgen_dir() {
 # }
 # export FZF_DEFAULT_OPTS='--walker file,dir,follow,hidden'
 
-# Created by `pipx` on 2024-05-21 06:19:43
-export PATH="$PATH:/home/visual/.local/bin"
 
 eval "$(register-python-argcomplete pipx)"
 
 
-
-# pnpm
-export PNPM_HOME="/home/pnpm/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+#
+# # pnpm
+# export PNPM_HOME="/home/pnpm/.local/share/pnpm"
+# case ":$PATH:" in
+#   *":$PNPM_HOME:"*) ;;
+#   *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac
+# # pnpm end
 
 
 # Load Angular CLI autocompletion.
@@ -235,3 +238,24 @@ alias z="zi"
 
 alias rcp="rsync -a --info=progress2"
 
+export PATH="$PATH:/home/solo/.local/bin"
+
+# Flatpak dirs
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/solo/.local/share/flatpak/exports/share"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# QT
+export QT_STYLE_OVERRIDE="adwaita"
+
+# read man
+man() { nvim -c "Man $1"; }
+compdef _man man
+
+# pnpm
+export PNPM_HOME="/home/solo/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
