@@ -70,7 +70,7 @@ return {
   --     alpha.setup(dashboard.opts)
   --
   --     -- Disable folding on alpha buffer
-  --     vim.cmd [[autocmd FileType alpha setlocal nofoldenable]]
+      -- vim.cmd [[autocmd FileType alpha setlocal nofoldenable]]
   --     vim.cmd [[au FileType alpha NvimTreeOpen ]]
   --   end,
 }

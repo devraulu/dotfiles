@@ -2,21 +2,21 @@ return {
   --
   -- --
   -- {
-  'catppuccin/nvim',
-  name = 'catppuccin',
-  priority = 1000,
-  config = function()
-    require('catppuccin').setup {
-      integrations = {
-        treesitter = true,
-        native_lsp = { enabled = true, styles = { variables = 'italic' } },
-        leap = true,
-        indent_blankline = { enabled = true },
-      },
-    }
-    vim.cmd [[colorscheme catppuccin]]
-    vim.g.lightline = { colorscheme = 'catppuccin' }
-  end,
+  -- 'catppuccin/nvim',
+  -- name = 'catppuccin',
+  -- priority = 1000,
+  -- config = function()
+  --   require('catppuccin').setup {
+  --     integrations = {
+  --       treesitter = true,
+  --       native_lsp = { enabled = true, styles = { variables = 'italic' } },
+  --       leap = true,
+  --       indent_blankline = { enabled = true },
+  --     },
+  --   }
+  --   vim.cmd [[colorscheme catppuccin]]
+  --   vim.g.lightline = { colorscheme = 'catppuccin' }
+  -- end,
   -- },
   -- -- { 'dracula/vim', as = 'dracula' },
   -- -- { 'projekt0n/github-nvim-theme' },
@@ -31,17 +31,17 @@ return {
   --   end,
   -- },
   -- {
-  --   'folke/tokyonight.nvim',
-  --   as = 'tokyonight',
-  --   config = function()
-  --     require('tokyonight').setup { transparent = true, style = 'moon', light_style = 'night', comments = { italic = false }, lualine_bold = true }
-  --     vim.cmd [[colorscheme tokyonight]]
-  --   end,
+    'folke/tokyonight.nvim',
+    as = 'tokyonight',
+    config = function()
+      require('tokyonight').setup { transparent = true, style = 'moon', light_style = 'night', comments = { italic = false }, lualine_bold = true }
+      vim.cmd [[colorscheme tokyonight]]
+    end,
   -- },
   -- -- { 'catppuccin/nvim' },
   -- -- { 'mofiqul/dracula.nvim' },
   -- -- { 'projekt0n/github-nvim-theme' },
-  -- -- { 'ellisonleao/gruvbox.nvim' },
+  -- { 'ellisonleao/gruvbox.nvim' },
   -- --
   -- -- { 'marko-cerovac/material.nvim' },
   -- -- { 'loctvl842/monokai-pro.nvim' },
@@ -68,24 +68,24 @@ return {
   --   end,
   -- },
   -- {
-  --   'hardhackerlabs/theme-vim',
-  --   name = 'hardhacker',
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.g.hardhacker_hide_tilde = 1
-  --     vim.g.hardhacker_keyword_italic = 1
-  --     -- custom highlights
-  --     -- vim.g.hardhacker_custom_highlights = {}
-  --     vim.cmd 'colorscheme hardhacker'
-  --   end,
+    -- 'hardhackerlabs/theme-vim',
+    -- name = 'hardhacker',
+    -- lazy = false,
+    -- priority = 1000,
+    -- config = function()
+    --   vim.g.hardhacker_hide_tilde = 1
+    --   vim.g.hardhacker_keyword_italic = 1
+    --   -- custom highlights
+    --   -- vim.g.hardhacker_custom_highlights = {}
+    --   vim.cmd 'colorscheme hardhacker'
+    -- end,
   -- },
   --
   -- {
-  --   'jaredgorski/SpaceCamp',
-  --   config = function()
-  --     vim.cmd.colorscheme 'SpaceCamp'
-  --   end,
+    -- 'jaredgorski/SpaceCamp',
+    -- config = function()
+    --   vim.cmd.colorscheme 'SpaceCamp'
+    -- end,
   -- },
   -- {
   --   'sainnhe/sonokai',
@@ -97,10 +97,10 @@ return {
   --   end,
   -- },
   -- {
-  --   'ajmwagar/vim-deus',
-  --   config = function()
-  --     vim.cmd [[colorscheme deus]]
-  --   end,
+    -- 'ajmwagar/vim-deus',
+    -- config = function()
+    --   vim.cmd [[colorscheme deus]]
+    -- end,
   -- },
   -- {
   --   'whatyouhide/vim-gotham',
