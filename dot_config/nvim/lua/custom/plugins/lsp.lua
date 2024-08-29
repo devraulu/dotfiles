@@ -43,6 +43,7 @@ return { -- LSP Configuration & Plugins
   init = function()
     vim.g.coq_settings = {
       auto_start = true, -- if you want to start COQ at startup
+      -- keymap = { pre_select = true },
       -- Your COQ settings here
     }
   end,
@@ -128,7 +129,22 @@ return { -- LSP Configuration & Plugins
       --
       gopls = {},
       pyright = {},
-      rust_analyzer = {},
+      rust_analyzer = {
+        -- assist = {
+        --   importEnforceGranularity = true,
+        --   -- importPrefix = 'crate',
+        -- },
+        cargo = {
+          allFeatures = true,
+        },
+        -- inlayHints = { locationLinks = false },
+        diagnostics = {
+          enable = true,
+          experimental = {
+            enable = true,
+          },
+        },
+      },
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 
       astro = {},
