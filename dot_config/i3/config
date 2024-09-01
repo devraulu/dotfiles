@@ -42,6 +42,7 @@ bindsym $mod+d exec "rofi -show combi -combi-modes 'window,drun' -modes combi"
 bindsym $mod+c exec "copyq show"
 
 bindsym $mod+Mod1+p exec flameshot gui
+bindsym $mod+Mod1+t exec "flameshot gui --raw | tesseract stdin stdout | xsel -b"
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu

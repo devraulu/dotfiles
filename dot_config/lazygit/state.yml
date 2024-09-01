@@ -1,17 +1,17 @@
 lastupdatecheck: 0
 recentrepos:
+    - /home/solo/work/sucal/backend/usuarios
+    - /home/solo/work/sucal/backend/vehiculos
+    - /home/solo/.local/share/chezmoi
     - /home/solo/work/sucal/backend/administracion
     - /home/solo/work/sucal/cert-lab-web
-    - /home/solo/.local/share/chezmoi
     - /home/solo/work/sucal/backend/integraciones
     - /home/solo/work/sucal/backend/personas
     - /home/solo/work/sucal/backend/credencializacion
     - /home/solo/work/sucal/backend/lic-conducir
     - /home/solo/work/sucal/backend/visitas
     - /home/solo/work/sucal/backend/empresas
-    - /home/solo/work/sucal/backend/vehiculos
     - /home/solo/work/sucal/backend/empleabilidad
-    - /home/solo/work/sucal/backend/usuarios
     - /home/solo/work/sucal/backend/comunes
 startuppopupversion: 5
 lastversion: 0.43.1
