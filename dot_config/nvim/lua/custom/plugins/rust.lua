@@ -2,7 +2,7 @@ return {
   {
     'mrcjkb/rustaceanvim',
     version = '^5', -- Recommended
-    lazy = false, -- This plugin is already lazy
+    lazy = false,
     config = function()
       local mason_registry = require 'mason-registry'
       local codelldb = mason_registry.get_package 'codelldb'
@@ -12,6 +12,15 @@ return {
       local cfg = require 'rustaceanvim.config'
       vim.g.rustaceanvim = {
         dap = { adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path) },
+        server = {
+          ---@param project_root string Path to the project root
+          settings = function(project_root)
+            local ra = require 'rustaceanvim.config.server'
+            return ra.load_rust_analyzer_settings(project_root, {
+              settings_file_pattern = 'rust-analyzer.json',
+            })
+          end,
+        },
       }
     end,
   },

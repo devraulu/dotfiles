@@ -129,22 +129,22 @@ return { -- LSP Configuration & Plugins
       --
       gopls = {},
       pyright = {},
-      rust_analyzer = {
-        -- assist = {
-        --   importEnforceGranularity = true,
-        --   -- importPrefix = 'crate',
-        -- },
-        cargo = {
-          allFeatures = true,
-        },
-        -- inlayHints = { locationLinks = false },
-        diagnostics = {
-          enable = true,
-          experimental = {
-            enable = true,
-          },
-        },
-      },
+      -- rust_analyzer = {
+      --   -- assist = {
+      --   --   importEnforceGranularity = true,
+      --   --   -- importPrefix = 'crate',
+      --   -- },
+      --   -- cargo = {
+      --   --   allFeatures = true,
+      --   -- },
+      --   -- -- inlayHints = { locationLinks = false },
+      --   -- diagnostics = {
+      --   --   enable = true,
+      --   --   experimental = {
+      --   --     enable = true,
+      --   --   },
+      --   -- },
+      -- },
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 
       astro = {},
@@ -188,6 +188,19 @@ return { -- LSP Configuration & Plugins
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     local coq = require 'coq'
+
+    vim.g.coq_settings = {
+      keymap = { jump_to_mark = '<c-r>' },
+    }
+
+    require 'coq_3p' {
+      { src = 'nvimlua', short_name = 'nLUA' },
+      -- { src = 'vimtex', short_name = 'vTEX' },
+      -- { src = 'copilot', short_name = 'COP', accept_key = '<c-f>' },
+      { src = 'vim_dadbod_completion', short_name = 'DB' },
+      { src = 'bc', short_name = 'MATH', precision = 6 },
+      { src = 'figlet', short_name = 'BIG' },
+    }
 
     require('mason-lspconfig').setup {
       handlers = {
