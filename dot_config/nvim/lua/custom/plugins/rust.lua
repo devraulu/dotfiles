@@ -30,7 +30,8 @@ return {
     config = function()
       require('crates').setup {
         completion = {
-          coq = { enabled = true },
+          -- coq = { enabled = true },
+          cmp = { enabled = true },
         },
       }
     end,
