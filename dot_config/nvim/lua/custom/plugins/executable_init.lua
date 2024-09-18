@@ -39,6 +39,7 @@ require('ibl').setup {}
 
 -- Folding
 vim.opt.foldmethod = 'indent'
+vim.opt.foldenable = false
 
 return {
   { 'lambdalisue/suda.vim' },
