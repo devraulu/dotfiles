@@ -32,8 +32,8 @@ vim.keymap.set('n', '<space>qq', '<cmd>qall!<CR>', { desc = '[Q]uit all' })
 vim.keymap.set('n', '<space>qs', '<cmd>conf xall<CR>', { desc = 'Confirm [save] and [q]uit' })
 vim.keymap.set('n', '<space>qs', '<cmd>conf xall<CR>', { desc = 'Confirm [save] and [q]uit' })
 
-vim.keymap.set('n', 'q', '<Nop>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-m>', 'q', { noremap = true, silent = true })
+-- vim.keymap.set('n', 'q', '<Nop>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<C-m>', 'q', { noremap = true, silent = true })
 
 require('ibl').setup {}
 
@@ -55,7 +55,7 @@ return {
   },
 
   { 'nvim-neotest/nvim-nio' },
-  { import = 'custom.plugins.themes.plugins' },
+  -- { import = 'custom.plugins.themes.plugins' },
   -- "gc" to comment visual regions/lines
   {
     'numToStr/Comment.nvim',

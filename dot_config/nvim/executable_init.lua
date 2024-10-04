@@ -414,7 +414,6 @@ require('lazy').setup {
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
-      local utils = require 'custom.utils'
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
         -- ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'astro', 'angular', 'css', 'scss', 'rust', 'typescript', 'yaml', 'toml' },
@@ -426,10 +425,6 @@ require('lazy').setup {
         indent = { enable = true },
       }
 
-      -- if opts.ensure_installed ~= 'all' then
-      --   opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, 'angular')
-      --   opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, 'astro')
-      -- end
       -- There are additional nvim-treesitter modules that you can use to interact
       -- with nvim-treesitter. You should go explore a few and see what interests you:
       --
@@ -457,6 +452,7 @@ require('lazy').setup {
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
+  { import = 'custom' },
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`

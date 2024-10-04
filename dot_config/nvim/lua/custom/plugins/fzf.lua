@@ -5,7 +5,6 @@ return {
   config = function()
     -- calling `setup` is optional for customization
     require('fzf-lua').setup {
-
       winopts = { preview = { layout = 'vertical', vertical = 'down:65%' } },
       lsp = {
         async_or_timeout = true,

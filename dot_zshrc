@@ -171,6 +171,7 @@ export EDITOR=nvim
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
+
 alias info="info --vi-keys"
 
 # FZF
@@ -246,7 +247,8 @@ export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/solo/.
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # QT
-export QT_STYLE_OVERRIDE="adwaita"
+export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=qt6ct
 
 # read man
 man() { nvim -c "Man $1"; }
