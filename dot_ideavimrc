@@ -1,0 +1,185 @@
+" basic
+set hlsearch
+set scrolloff=999
+set ignorecase smartcase
+set showmode
+set history=1000
+set incsearch
+set clipboard+=unnamed
+set relativenumber
+set number
+set visualbell
+set idearefactormode=keep
+set showcmd
+set showmode
+
+" extensions
+set sneak
+set quickscope
+set matchit
+set surround
+set commentary
+set easymotion
+set multiple-cursors
+set highlightedyank
+set NERDTree
+set argtextobj
+set vim-numbertoggle
+
+" register leader
+let mapleader = " "
+
+" After block yank and paste, move cursor to the end of operated text and don't override register
+vnoremap p "_dP`]
+nnoremap p p`]
+
+" Y yank whole line by default
+vnoremap y ygv<Esc>$
+nnoremap Y y$
+
+" Yank and paste from clipboard
+nnoremap ,y "+y
+vnoremap ,y "+y
+nnoremap ,yy "+yy
+nnoremap ,p "+p
+
+" have x (removes single character) not go into the default registry
+nnoremap x "_x
+" Make X an operator that removes without placing text in the default registry
+nmap X "_d
+nmap XX "_dd
+vmap X "_d
+vmap x "_d
+
+" don't yank to default register when changing something
+nnoremap c "xc
+xnoremap c "xc
+
+" Change line, better use S for this.
+nmap cc 1S
+
+" Copy Word
+nmap ,c yiw
+
+" Select word
+nmap ,v viw
+
+" Reselect last-pasted text
+nnoremap gp `[v`]
+
+" Center screen when jumping to next match
+nnoremap n nzz
+nnoremap N Nzz
+vnoremap n nzz
+vnoremap N Nzz
+
+" Center screen when moving up and down
+nnoremap <C-u> <C-u>zz
+nnoremap <C-o> <C-d>zz
+vnoremap <C-u> <C-u>zz
+vnoremap <C-o> <C-d>zz
+
+" easy window navigation
+nnoremap <a-k> gT
+nnoremap <a-j> gt
+nnoremap <c-s-tab> gT
+nnoremap <c-tab> gt
+
+" clear the search buffer when hitting return
+nnoremap <leader><cr> :nohlsearch<cr>
+
+" code Refactoring
+:map <leader>r <Action>(RenameElement)
+:map <leader>R <Action>(Refactorings.QuickListPopupAction)
+:map <leader>fc <Action>(ReformatCode)
+:map <leader>sw <Action>(SurroundWith)
+:map <leader>oi <Action>(OptimizeImports)
+
+" stuff
+:map <leader>ff <Action>(QuickJavaDoc)
+:map <leader>ee <Action>(ShowErrorDescription)
+:map <leader>hh <Action>(QuickImplementations)
+
+" breakpoints
+:map <leader>bb <Action>(ToggleLineBreakpoint)
+:map <leader>bs <Action>(ViewBreakpoints)
+:map <leader>br <Action>(Debugger.RemoveAllBreakpoints)
+
+" comment out
+:map <leader>cc <Action>(CommentByLineComment)
+:map <leader>tt <Action>(CommentByBlockComment)
+
+" ace
+:map ff <Action>(AceAction)
+:map ft <Action>(AceTargetAction)
+:map fl <Action>(AceLineAction)
+
+" code navigation
+:map <leader>k {
+:map <leader>j }
+:map <leader>h <Action>(MethodUp)
+:map <leader>l <Action>(MethodDown)
+:map <leader>hu <Action>(HighlightUsagesInFile)
+:map <leader>rl <Action>(RecentLocations)
+:map <leader>sh <Action>(LocalHistory.ShowHistory)
+:map ge <Action>(GotoNextError)
+:map gE <Action>(GotoPreviousError)
+:map g, <Action>(JumpToLastChange)
+:map g. <Action>(JumpToNextChange)
+:map gn <Action>(VcsShowNextChangeMarker)
+:map gp <Action>(VcsShowPrevChangeMarker)
+:nmap g) <Action>(GotoNextElementUnderCaretUsage)
+:nmap g( <Action>(GotoPrevElementUnderCaretUsage)
+:map <leader>m <Action>(ShowIntentionActions)
+:map <leader>o <Action>(FileStructurePopup)
+:map <leader>pw <Action>(SelectInProjectView)
+
+" splits
+:nmap <leader>i <Action>(PrevSplitter)
+:nmap <c-v> <Action>(SplitVertically)
+
+" built-in navigation to navigated items works better
+:nmap <c-o> <Action>(Back)
+:nmap <c-i> <Action>(Forward)
+
+" but preserve ideavim defaults
+:map g<c-o> <c-o>
+:map g<c-i> <c-i>
+
+" close stuff
+:map <leader>q <Action>(CloseEditor)
+:map <leader>Q <Action>(CloseAllEditors)
+:map <leader>w <Action>(CloseAllEditorsButActive)
+
+" reactivate some IDEA shortcuts
+:map <c-n> <Action>(SearchEverywhere)
+:map <leader>g <Action>(GotoFile)
+:map <c-b> <Action>(ShowUsages)
+:map <c-s> <Action>(SaveAll)
+:map <c-c> <Action>(GotoImplementation)
+
+" run stuff
+:map <leader>cg <Action>(ChooseRunConfiguration)
+:map <leader>dg <Action>(ChooseDebugConfiguration)
+:map <leader>1 <Action>(Run)
+:map <leader>2 <Action>(Debug)
+:map <leader>0 <Action>(Stop)
+
+" other things
+:map <leader>ns <Action>(NewScratchFile)
+:map <leader>an <Action>(Annotate)
+
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+:augroup END
+
+" source
+:map <leader>9 :source ~/.ideavimrc<CR>
+
+if !exists('*gn')
+    nmap cgn gn
+endif
+

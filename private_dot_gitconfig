@@ -1,0 +1,66 @@
+[color]
+    ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[credential]
+	helper = /usr/libexec/git-core/git-credential-libsecret
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	; pager = diff | less --tabs=4 -RFX
+
+[interactive]
+    diffFilter = diff-so-fancy --patch
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+; [merge]
+    ; conflictstyle = diff3
+    ; tool = nvim
+
+[merge]
+	tool = meld
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
+[difftool "meld"]
+	cmd = meld "$LOCAL" "$REMOTE"
+;
+; [mergetool "nvim"]
+; cmd = "nvim -f \"$MERGED\" -c \"DiffviewOpen\""
+; trustExitCode = true
+
+; [mergetool "nvim"]
+;     cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+;
+; [mergetool]
+;   prompt = false
+;
+; [diff]
+;     colorMoved = default
+
+; [gpg]
+; 	format = ssh
+; [gpg "ssh"]
+; 	program = /opt/1Password/op-ssh-sign
+; [commit]
+; 	gpgsign = true
+[user]
+	; signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCvEcqGnNPfcWYK0znjMBZFK4Vi/EDWIHO5XeIQAwQfVZ52HQc50JMvt2zz+F6ZielsdtYkuc+umPKlalrkbk56P1pyuxdo3bPObCjEyWN800GVNRuq4dr9IDS0/H+nLpQjUKfu9DO52MuMvQnwmnxtOX3sM/R1uAVP+lYZcNn1kzNmw2oVm5hXqZKwvsGSu3JrEjlkhrCnLFyBLb3yxxcUot6hBLck7qCm/nQpJzvTJFJRbbUrSkXBv0iT1caF//gxUFXgsVWahsz4unMhz5qD0BF3jT6+zJ5Gtt9xbErpL1+Sux3ipnfKU6TJLYG4pSOpdh/s7ecddGUlCEmonPoCGYHOQgVzPFXTBuXkpnCGG85KpUpMtrz3ygc2vqs54hg3W/4xZfnJPdqSVoTmpr7WdZV5rD+vN1/MXRpOoBT2rlC7E1gW2K2f24wWtPKYvJiBUDf+w0QYOfTbsMkxEUcjg4bratjRhWfHq2k7xHKm6J9lcAf2wG2vrLRR1UxuFglhmNKYqNu3igC2OKp1xfFPMKOR0Vve1ceOKhzNZAQSJeWUa3x8p2CY042pinQQjgOdl0tguGis4Qq//sR2QecrfsrpzFuMALomh5KQn9jcacnpfosNvt/VHM3nEvB9DzIK7twG5yR8L07Jcp64sgqGFbimBsb1iGTepv5voLRelw==
+	email = soyrauluis@gmail.com
+	name = Raúl Luis
+
+[includeIf "gitdir:~/work/sucal/"]
+	path= ~/work/sucal/.gitconfig-workmate
