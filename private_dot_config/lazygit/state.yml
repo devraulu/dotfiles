@@ -1,0 +1,16 @@
+lastupdatecheck: 0
+recentrepos:
+    - /home/solo/work/thenetnook/claimcon.api
+startuppopupversion: 5
+lastversion: 0.44.1
+customcommandshistory:
+    - w
+    - q
+hidecommandlog: false
+ignorewhitespaceindiffview: true
+diffcontextsize: 2
+renamesimilaritythreshold: 50
+localbranchsortorder: recency
+remotebranchsortorder: date
+gitlogorder: topo-order
+gitlogshowgraph: always

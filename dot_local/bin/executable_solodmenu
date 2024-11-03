@@ -1,3 +1,0 @@
-#! /bin/bash
-
-dmenu -i -fn 'SpaceMono Nerd Font:pixelsize=18' -p '󰫢 ' -nb "#11111b" -nf "#f2cdcd" -sf "#b4befe" -sb "#313244"  

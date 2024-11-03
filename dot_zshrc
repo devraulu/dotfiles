@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/solo/.zsh/completions:"* ]]; then export FPATH="/home/solo/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -9,7 +11,7 @@
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
 # eval "$(oh-my-posh init zsh)"
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -75,10 +77,46 @@ eval "$(starship init zsh)"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 fpath+=${CUSTOM_ZSH_COMPLETIONS:-~}/completions
 
-# source /usr/share/zsh/share/antigen.zsh
-source /home/linuxbrew/.linuxbrew/share/antigen/antigen.zsh
+
+# Check if we are in a container
+function is_container() {
+    if [ -f /run/.containerenv ] || [ -f /.dockerenv ]; then
+        echo "($(hostname)) "
+    fi
+}
+
+
+function get_container_name() {
+    if [ -f /run/.containerenv ]; then
+        # For Toolbox and Distrobox
+        container_name=$(grep -oP '(?<=name=").*(?=")' /run/.containerenv)
+        echo "(📦️ $container_name) "
+    elif [ -f /.dockerenv ]; then
+        # For generic Docker containers
+        echo "(📦️ Docker) "
+    fi
+}
+
+# Function to detect Distrobox or Toolbox
+distrobox_toolbox_prompt() {
+  if [[ -n "$DISTROBOX_NAME" ]]; then
+    echo "%F{blue}[Distrobox:$DISTROBOX_NAME]%f"
+  elif [[ -n "$TOOLBOX_PATH" ]]; then
+    echo "%F{green}[Toolbox]%f"
+  fi
+}
+
+# source $HOME/antigen.zsh
+source /usr/share/antigen.zsh
+# source /home/linuxbrew/.linuxbrew/share/antigen/antigen.zsh
+#
+export ANTIGEN_LOG=~/antigen.log
 
 antigen use oh-my-zsh
+# antigen theme cloud
+# antigen theme lambda
+# antigen theme lambda
+antigen theme ~/.antigen/themes lambda.zsh-theme
 
 antigen bundle git
 antigen bundle vi-mode
@@ -151,9 +189,9 @@ alias ll="ls -alh"
 
 # source /usr/share/nvm/init-nvm.sh
 
- export NVM_DIR="$HOME/.nvm"
-  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+ # export NVM_DIR="$HOME/.nvm"
+ #  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+ #  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export TERM="kitty"
 
@@ -219,7 +257,7 @@ _fzf_compgen_dir() {
 # export FZF_DEFAULT_OPTS='--walker file,dir,follow,hidden'
 
 
-eval "$(register-python-argcomplete pipx)"
+# eval "$(register-python-argcomplete pipx)"
 
 
 #
@@ -233,7 +271,7 @@ eval "$(register-python-argcomplete pipx)"
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
 alias z="zi"
 
@@ -244,7 +282,7 @@ export PATH="$PATH:/home/solo/.local/bin"
 # Flatpak dirs
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/solo/.local/share/flatpak/exports/share"
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # QT
 export QT_STYLE_OVERRIDE=kvantum
@@ -261,3 +299,11 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+alias db='distrobox'
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+export TMUX_TMPDIR="/var/tmp"
+
+alias av='NVIM_APPNAME=astronvim nvim'
