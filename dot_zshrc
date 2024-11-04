@@ -159,10 +159,12 @@ export LANG=en_US.UTF-8
 #
 #
 # NEOVIM
-alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
-alias avim="NVIM_APPNAME=astronvim nvim"
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+
+export SUDOEDIT='/usr/bin/nvim'
+export EDITOR='/usr/bin/nvim'
 
 export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
 
@@ -204,8 +206,6 @@ export DOWNGRADE_FROM_ALA=1
 # alias cat="bat"
 
 export SSH_AUTH_SOCK=~/.1password/agent.sock
-
-export EDITOR=nvim
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -306,4 +306,3 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export TMUX_TMPDIR="/var/tmp"
 
-alias av='NVIM_APPNAME=astronvim nvim'
