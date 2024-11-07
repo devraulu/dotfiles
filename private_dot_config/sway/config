@@ -30,7 +30,7 @@ set $menu $rofi_cmd -show combi -combi-modes 'window,drun' -modes combi
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
-output * bg /home/solo/wallpapers/always_has_been.png fill
+output * bg /home/solo/wallpapers/japanese_street.png fill
 
 font pango:Inter Bold 10
 
@@ -274,7 +274,7 @@ bindsym $mod+Ctrl+p mode "$mode_system"
 
 set $primary_bg #191724     
 set $secondary_bg #1f1d2e  
-set $tertiary_bg #262329aa
+set $tertiary_bg #26232966
 set $text_color #e0def4
 set $secondary_text_color #908caa
 

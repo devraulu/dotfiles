@@ -3,7 +3,6 @@ return { -- override nvim-cmp plugin
   keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
   dependencies = {
     "hrsh7th/cmp-cmdline", -- add cmp-cmdline as dependency of cmp
-    "kristijanhusak/vim-dadbod-completion",
     {
       "L3MON4D3/LuaSnip",
       build = (function()
@@ -72,14 +71,6 @@ return { -- override nvim-cmp plugin
             ignore_cmds = { "Man", "!" },
           },
         },
-      }),
-    })
-
-    cmp.setup.filetype({ "sql" }, {
-      sources = cmp.config.sources({
-        { name = "vim-dadbod-completion" },
-      }, {
-        { name = "buffer" },
       }),
     })
   end,

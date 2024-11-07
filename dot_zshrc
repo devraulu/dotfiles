@@ -289,8 +289,8 @@ export QT_STYLE_OVERRIDE=kvantum
 export QT_QPA_PLATFORMTHEME=qt6ct
 
 # read man
-man() { nvim -c "Man $1"; }
-compdef _man man
+# man() { nvim -c "Man $1"; }
+# compdef _man man
 
 # pnpm
 export PNPM_HOME="/home/solo/.local/share/pnpm"
@@ -306,3 +306,5 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export TMUX_TMPDIR="/var/tmp"
 
+export PATH=$HOME/.dotnet/tools:$PATH
+export PATH=$HOME/development/flutter/bin:$PATH
