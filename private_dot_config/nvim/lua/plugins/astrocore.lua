@@ -66,6 +66,9 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+        ["Za"] = "<Plug>(sandwich-add)",
+        ["Zd"] = "<Plug>(sandwich-delete)",
+        ["Zr"] = "<Plug>(sandwich-replace)",
       },
     },
   },

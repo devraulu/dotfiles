@@ -81,7 +81,9 @@ font pango:Inter Bold 10
     # Start your launcher
     bindsym $mod+d exec $menu
 
-    set $local_bin /var/home/solo/.local/bin
+
+    set $local_bin "/home/solo/.local/bin/"
+    
     # clipboard
     bindsym $mod+c exec copyq menu 
 
@@ -298,6 +300,7 @@ for_window [title="^Picture in picture$"] floating enable, sticky enable, border
 for_window [app_id="com.vixalien.sticky"] floating enable, sticky enable, border none
 
 for_window [app_id="com.github.hluk.copyq"] floating enable, sticky enable, border none
+for_window [title="Emulator"] floating enable, sticky enable, border none
 
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'

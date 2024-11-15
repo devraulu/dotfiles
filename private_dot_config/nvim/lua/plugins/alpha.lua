@@ -56,6 +56,6 @@ return {
       [[  ⠀⠀⠀⠀⠀⠀⠋⢡⣿⣿⣿⣿⣿⣽⣿⣿⣿⣿⣿⣿⣿⢿⣛⣯⣶⢾⣯⢭⡿⡟⠻⠿⢿⣿⠁⠀⠀⠀⠀⠀⠀⠀ ]],
     }
     opts.section.header.val = mikasa
-    opts.section.header.opts.hl = "SignColumn"
+    opts.section.header.opts.hl = "Character"
   end,
 }
