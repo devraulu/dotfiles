@@ -298,8 +298,8 @@ for_window [title="^Picture-in-Picture$"] floating enable, sticky enable, border
 for_window [title="^Picture in picture$"] floating enable, sticky enable, border none
 
 for_window [app_id="com.vixalien.sticky"] floating enable, sticky enable, border none
-
 for_window [app_id="com.github.hluk.copyq"] floating enable, sticky enable, border none
+for_window [app_id="pomodorolm"] floating enable, sticky enable, border none
 for_window [title="Emulator"] floating enable, sticky enable, border none
 
 

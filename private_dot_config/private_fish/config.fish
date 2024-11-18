@@ -26,5 +26,7 @@ alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 
-# export SUDOEDIT='/usr/bin/nvim'
-# export EDITOR='/usr/bin/nvim'
+load_nvm > /dev/stderr
+
+export SUDOEDIT='/usr/bin/nvim'
+export EDITOR='/usr/bin/nvim'
