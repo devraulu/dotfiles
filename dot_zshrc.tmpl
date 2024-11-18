@@ -1,0 +1,133 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/solo/.zsh/completions:"* ]]; then export FPATH="/home/solo/.zsh/completions:$FPATH"; fi
+
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+fpath+=${CUSTOM_ZSH_COMPLETIONS:-~}/completions
+
+{{ if eq .chezmoi.os "darwin" -}}
+  source $HOME/antigen.zsh
+  antigen theme lambda
+{{ else if eq .chezmoi.os "linux" -}}
+  source /usr/share/antigen.zsh
+  antigen theme ~/.antigen/themes lambda.zsh-theme
+{{ end -}}
+
+export ANTIGEN_LOG=~/antigen.log
+
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle vi-mode
+antigen bundle tmux
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle Aloxaf/fzf-tab
+
+antigen apply
+
+
+export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# NEOVIM
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+
+
+# NODE
+export NODE_OPTIONS=--max-old-space-size=8192
+
+alias lg="lazygit"
+
+alias ll="ls -alh"
+
+export TERM="kitty"
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+
+alias info="info --vi-keys"
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | xsel -ib)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'tree -C {}'"
+  
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --no-ignore --follow --exclude "node_modules|.git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+alias z="zi"
+
+alias rcp="rsync -a --info=progress2"
+
+export PATH="$PATH:/home/solo/.local/bin"
+
+# pnpm
+export PNPM_HOME="$HOME/solo/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
+export TMUX_TMPDIR="/var/tmp"
+
+export PATH=$HOME/.dotnet/tools:$PATH
+export PATH=$HOME/flutter/bin:$PATH
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-17.0.13.0.11-1.fc41.x86_64
+export PATH=$JAVA_HOME:$PATH
+
+{{ if eq .chezmoi.os "darwin" -}}
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export SUDOEDIT='/opt/homebrew/bin/nvim'
+export EDITOR='/opt/homebrew/bin/nvim'
+
+{{ else if eq .chezmoi.os "linux" -}}
+
+export SUDOEDIT='/usr/bin/nvim'
+export EDITOR='/usr/bin/nvim'
+export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
+
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# Flatpak dirs
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/solo/.local/share/flatpak/exports/share"
+
+# QT
+export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=qt6ct
+
+alias db='distrobox'
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+{{ end -}}
