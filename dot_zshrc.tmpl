@@ -44,8 +44,6 @@ alias lg="lazygit"
 
 alias ll="ls -alh"
 
-export TERM="kitty"
-
 # zoxide
 eval "$(zoxide init zsh)"
 
@@ -95,7 +93,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-
 export TMUX_TMPDIR="/var/tmp"
 
 export PATH=$HOME/.dotnet/tools:$PATH
@@ -130,4 +127,7 @@ alias db='distrobox'
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+export TERM="kitty"
+
 {{ end -}}
