@@ -30,7 +30,7 @@ set $menu $rofi_cmd -show combi -combi-modes 'window,drun' -modes combi
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
-output * bg /home/solo/wallpapers/japanese_street.png fill
+output * bg /home/solo/wallpapers/Rosa_Bonheur,_The_Horse_Fair,_1852–55.jpg fill
 
 font pango:Inter Bold 10
 

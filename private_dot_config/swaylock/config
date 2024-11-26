@@ -3,5 +3,5 @@
 #
 # Image path supports environment variables and shell expansions,
 # e.g. image=$HOME/Pictures/default.png
-image=$HOME/wallpapers/eder-pozo-perez-ymqeugh2Ns8-unsplash.jpg
+image=$HOME/wallpapers/guts_resting.jpg
 scaling=fill

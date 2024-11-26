@@ -1,8 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
     - /home/solo/.local/share/chezmoi
-    - /home/solo/work/thenetnook/asklepius/app
+    - /home/solo/development/rust/hollow
     - /home/solo/development/blog
+    - /home/solo/work/thenetnook/asklepius/app
     - /home/solo/development/rust/my-redis
     - /home/solo/work/thenetnook/claimcon.api
 startuppopupversion: 5
@@ -13,7 +14,7 @@ customcommandshistory:
 hidecommandlog: false
 ignorewhitespaceindiffview: true
 diffcontextsize: 2
-renamesimilaritythreshold: 50
+renamesimilaritythreshold: 45
 localbranchsortorder: recency
 remotebranchsortorder: date
 gitlogorder: topo-order
