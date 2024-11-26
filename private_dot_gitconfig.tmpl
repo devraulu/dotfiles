@@ -14,8 +14,12 @@
 	new = green bold
 	whitespace = red reverse
 
+
+{{ if eq .chezmoi.os "darwin" -}}
+{{ else if eq .chezmoi.os "linux" -}}
 [credential]
 	helper = /usr/libexec/git-core/git-credential-libsecret
+{{ end -}}
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	; pager = diff | less --tabs=4 -RFX
