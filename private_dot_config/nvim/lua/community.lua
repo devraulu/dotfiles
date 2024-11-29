@@ -15,6 +15,8 @@ return {
   -- { import = "astrocommunity.colorscheme.dracula-nvim" },
   -- { import = "astrocommunity.colorscheme.night-owl-nvim" },
   { import = "astrocommunity.colorscheme.mellifluous-nvim" },
+  { import = "astrocommunity.colorscheme.gruvbox-nvim" },
+  -- ellisonleao/gruvbox.nvim
   -- { import = "astrocommunity.colorscheme.kanagawa-nvim" },
   -- { import = "astrocommunity.colorscheme.iceberg-vim" },
   -- { import = "astrocommunity.colorscheme.nord-nvim" },

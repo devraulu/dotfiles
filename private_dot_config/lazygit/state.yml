@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+    - /home/solo/work/thenetnook/asklepius/asklepius.api
     - /home/solo/.local/share/chezmoi
     - /home/solo/development/rust/hollow
     - /home/solo/development/blog

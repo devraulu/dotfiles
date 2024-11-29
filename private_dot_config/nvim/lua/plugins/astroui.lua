@@ -22,7 +22,8 @@ return {
       -- colorscheme = "poimandres",
       -- colorscheme = "catppuccin-macchiato",
       -- colorscheme = "dracula",
-      colorscheme = "mellifluous",
+      -- colorscheme = "mellifluous",
+      colorscheme = "gruvbox",
       -- colorscheme = "night-owl",
       -- colorscheme = "iceberg",
       -- colorscheme = "kanagawa-dragon",
@@ -79,4 +80,6 @@ return {
   --   },
   -- },
   --
+  --
+  { "ellisonleao/gruvbox.nvim", opts = { transparent_mode = true } },
 }
