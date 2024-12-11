@@ -49,6 +49,8 @@ return {
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.swift" },
   { import = "astrocommunity.pack.cs" },
+  { import = "astrocommunity.pack.java" },
+  { import = "astrocommunity.pack.kotlin" },
   { import = "astrocommunity.file-explorer.oil-nvim" },
   { import = "astrocommunity.completion.supermaven-nvim" },
   -- { import = "astrocommunity.completion.avante-nvim" },

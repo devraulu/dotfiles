@@ -18,13 +18,14 @@ return {
     -- },
     -- vim options can be configured here
     options = {
-      -- opt = { -- vim.opt.<key>
-      --   relativenumber = true, -- sets vim.opt.relativenumber
-      --   number = true, -- sets vim.opt.number
-      --   spell = false, -- sets vim.opt.spell
-      --   signcolumn = "yes", -- sets vim.opt.signcolumn to yes
-      --   wrap = false, -- sets vim.opt.wrap
-      -- },
+      opt = { -- vim.opt.<key>
+        mouse = "a",
+        --   relativenumber = true, -- sets vim.opt.relativenumber
+        --   number = true, -- sets vim.opt.number
+        --   spell = false, -- sets vim.opt.spell
+        --   signcolumn = "yes", -- sets vim.opt.signcolumn to yes
+        -- wrap = false, -- sets vim.opt.wrap
+      },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
@@ -65,6 +66,11 @@ return {
         ["<C-w>mm"] = { "<cmd>WindowsMaximize<CR>", desc = "Maximize" },
         ["<C-w>mv"] = { "<cmd>WindowsMaximizeVertically<CR>", desc = "Maximize Vertically" },
         ["<C-w>mh"] = { "<cmd>WindowsMaximizeHorizontally<CR>", desc = "Maximize Horizontally" },
+      },
+      v = {
+        ["Za"] = { "<Plug>(sandwich-add)", desc = "Add Zandwich" },
+        ["Zd"] = { "<Plug>(sandwich-delete)", desc = "Delete Zandwich" },
+        ["Zr"] = { "<Plug>(sandwich-replace)", desc = "Replace Zandwich" },
       },
     },
   },

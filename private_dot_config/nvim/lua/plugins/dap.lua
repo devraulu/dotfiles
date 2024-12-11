@@ -1,0 +1,279 @@
+-- local dap = require "dap"
+--
+-- dap.adapters.coreclr = {
+--   type = "executable",
+--   command = "netcoredbg",
+--   args = { "--interpreter=vscode" },
+-- }
+--
+-- -- local function get_dll()
+-- --   return coroutine.create(function(dap_run_co)
+-- --     local items = vim.fn.globpath(vim.fn.getcwd(), "**/bin/Debug/**/*.dll", 0, 1)
+-- --     local opts = {
+-- --       format_item = function(path) return vim.fn.fnamemodify(path, ":t") end,
+-- --     }
+-- --     local function cont(choice)
+-- --       if choice == nil then
+-- --         return nil
+-- --       else
+-- --         coroutine.resume(dap_run_co, choice)
+-- --       end
+-- --     end
+-- --
+-- --     vim.ui.select(items, opts, cont)
+-- --   end)
+-- -- end
+--
+-- -- dap.configurations.cs = {
+-- --   type = "coreclr",
+-- --   name = "NetCoreDbg: Launch",
+-- --   request = "launch",
+-- --   cwd = "${fileDirname}",
+-- --   env = "ASPNETCORE_ENVIRONMENT=Development",
+-- --   args = {
+-- --     "/p:EnvironmentName=Development",
+-- --     "--urls=http://localhost:5002",
+-- --     "--environment=Development",
+-- --   },
+-- --   program = get_dll,
+-- -- }
+--
+-- vim.g.dotnet_build_project = function()
+--   local default_path = vim.fn.getcwd() .. "/"
+--   if vim.g["dotnet_last_proj_path"] ~= nil then default_path = vim.g["dotnet_last_proj_path"] end
+--   local path = vim.fn.input("Path to your *proj file", default_path, "file")
+--   vim.g["dotnet_last_proj_path"] = path
+--   local cmd = "dotnet build -c Debug " .. path .. " > /dev/null"
+--   print ""
+--   print("Cmd to execute: " .. cmd)
+--   local success, termination_type, code = os.execute(cmd)
+--   if success then
+--     print "\nBuild: ✔️ "
+--   else
+--     print("\nBuild: ❌ (code: " .. code .. ")")
+--   end
+-- end
+--
+-- -- vim.g.get_dll = function()
+-- --   return function()
+-- --     return coroutine.resume(coroutine.create(function(dap_run_co)
+-- --       local items = vim.fn.globpath(vim.fn.getcwd(), "**/bin/Debug/**/*.dll", true, 1)
+-- --       local opts = {
+-- --         format_item = function(path) return vim.fn.fnamemodify(path, ":t") end,
+-- --       }
+-- --
+-- --       local selected = nil
+-- --       vim.ui.select(items, opts, function(choice) selected = choice end)
+-- --       coroutine.yield(selected)
+-- --     end))
+-- --   end
+-- -- end
+--
+-- -- vim.g.get_dll = function(callback)
+-- --   local items = vim.fn.globpath(vim.fn.getcwd(), "**/bin/Debug/**/*.dll", true, 1)
+-- --   local opts = {
+-- --     format_item = function(path) return vim.fn.fnamemodify(path, ":t") end,
+-- --   }
+-- --
+-- --   vim.ui.select(items, opts, function(choice)
+-- --     if callback then callback(choice) end
+-- --   end)
+-- -- end
+-- --
+-- -- vim.g.dotnet_get_dll_path = function()
+-- --   -- local request = function() return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file") end
+-- --   local request = vim.g.get_dll
+-- --
+-- --   if vim.g["dotnet_last_dll_path"] == nil then
+-- --     vim.g["dotnet_last_dll_path"] = request()
+-- --   else
+-- --     if
+-- --       vim.fn.confirm("Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"], "&yes\n&no", 2) == 1
+-- --     then
+-- --       vim.g["dotnet_last_dll_path"] = request()
+-- --     end
+-- --   end
+-- --
+-- --   return vim.g["dotnet_last_dll_path"]
+-- -- end
+--
+-- -- vim.g.get_dll = function(callback)
+-- --   local items = vim.fn.globpath(vim.fn.getcwd(), "**/bin/Debug/**/*.dll", true, 1)
+-- --   local opts = {
+-- --     format_item = function(path) return vim.fn.fnamemodify(path, ":t") end,
+-- --   }
+-- --
+-- --   vim.ui.select(items, opts, function(choice)
+-- --     if callback then callback(choice) end
+-- --   end)
+-- -- end
+--
+-- -- vim.g.dotnet_get_dll_path = function()
+-- --   local function request(callback) vim.g.get_dll(callback) end
+-- --
+-- --   if vim.g["dotnet_last_dll_path"] == nil then
+-- --     request(function(selected_path) vim.g["dotnet_last_dll_path"] = selected_path end)
+-- --   else
+-- --     if
+-- --       vim.fn.confirm("Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"], "&yes\n&no", 2) == 1
+-- --     then
+-- --       request(function(selected_path) vim.g["dotnet_last_dll_path"] = selected_path end)
+-- --     end
+-- --   end
+-- --
+-- --   return vim.g["dotnet_last_dll_path"]
+-- -- end
+-- --
+-- -- local await_ui_select = coroutine.create(function(items, opts)
+-- --   local result
+-- --   vim.ui.select(items, opts, function(choice) result = choice end)
+-- --
+-- --   -- Wait until the user makes a selection
+-- --   while result == nil do
+-- --     coroutine.yield()
+-- --   end
+-- --
+-- --   return result
+-- -- end)
+-- --
+-- -- local get_dll = function()
+-- --   local items = vim.fn.globpath(vim.fn.getcwd(), "**/bin/Debug/**/*.dll", true, 1)
+-- --   local opts = {
+-- --     format_item = function(path) return vim.fn.fnamemodify(path, ":t") end,
+-- --   }
+-- --
+-- --   if #items == 0 then
+-- --     vim.notify("No DLLs found in Debug folders!", vim.log.levels.ERROR)
+-- --     return nil
+-- --   end
+-- --
+-- --   -- Await user selection
+-- --   local _, result = coroutine.resume(await_ui_select, items, opts)
+-- --   return result
+-- -- end
+-- --
+-- -- vim.g.dotnet_get_dll_path = function()
+-- --   local dll_path = vim.g["dotnet_last_dll_path"]
+-- --
+-- --   local request = get_dll
+-- --
+-- --   if not dll_path then
+-- --     local result = request()
+-- --     print(result)
+-- --     vim.g["dotnet_last_dll_path"] = result
+-- --   else
+-- --     if vim.fn.confirm("Do you want to change the path to dll?\n" .. dll_path, "&yes\n&no", 2) == 1 then
+-- --       local result = request()
+-- --       print(result)
+-- --       vim.g["dotnet_last_dll_path"] = result
+-- --     end
+-- --   end
+-- --
+-- --   return vim.g["dotnet_last_dll_path"]
+-- -- end
+-- --
+-- -- vim.g.get_dll = function()
+-- --   local items = vim.fn.globpath(vim.fn.getcwd(), "**/bin/Debug/**/*.dll", true, 1)
+-- --   local opts = {
+-- --     format_item = function(path) return vim.fn.fnamemodify(path, ":t") end,
+-- --     prompt = "Select a DLL:",
+-- --   }
+-- --
+-- --   if #items == 0 then
+-- --     vim.notify("No DLLs found in Debug folders!", vim.log.levels.ERROR)
+-- --     return nil
+-- --   end
+-- --
+-- --   -- Wrap `vim.ui.select` in a coroutine to handle it synchronously
+-- --   return coroutine.wrap(function()
+-- --     local result
+-- --     vim.ui.select(items, opts, function(choice)
+-- --       result = choice
+-- --     end)
+-- --
+-- --     -- Wait for the user to make a selection
+-- --     while result == nil do
+-- --       coroutine.yield()
+-- --     end
+-- --
+-- --     return result
+-- --   end)()
+-- -- end
+-- --
+-- -- vim.g.dotnet_get_dll_path = function()
+-- --   local dll_path = vim.g["dotnet_last_dll_path"]
+-- --
+-- --   if not dll_path then
+-- --     vim.g["dotnet_last_dll_path"] = vim.g.get_dll()
+-- --   else
+-- --     if vim.fn.confirm("Do you want to change the path to dll?\n" .. dll_path, "&yes\n&no", 2) == 1 then
+-- --       vim.g["dotnet_last_dll_path"] = vim.g.get_dll()
+-- --     end
+-- --   end
+-- --
+-- --   return vim.g["dotnet_last_dll_path"]
+-- -- end
+-- --
+--
+-- vim.g.get_dll = function()
+--   local items = vim.fn.globpath(vim.fn.getcwd(), "**/bin/Debug/**/*.dll", true, 1)
+--   local opts = {
+--     format_item = function(path) return vim.fn.fnamemodify(path, ":t") end,
+--     prompt = "Select a DLL:",
+--   }
+--
+--   if #items == 0 then
+--     vim.notify("No DLLs found in Debug folders!", vim.log.levels.ERROR)
+--     return nil
+--   end
+--
+--   local co
+--   local cb
+--   -- = vim.schedule_wrap(function(choice) result = choice end)
+--
+--   if not cb then
+--     co = coroutine.running()
+--     if co then cb = function(item) coroutine.resume(co, item) end end
+--   end
+--
+--   vim.ui.select(items, opts, cb)
+--
+--   if co then return coroutine.yield() end
+-- end
+--
+-- vim.g.dotnet_get_dll_path = function()
+--   local dll_path = vim.g["dotnet_last_dll_path"]
+--
+--   if not dll_path then
+--     vim.g["dotnet_last_dll_path"] = vim.g.get_dll()
+--   else
+--     if vim.fn.confirm("Do you want to change the path to dll?\n" .. dll_path, "&yes\n&no", 2) == 1 then
+--       vim.g["dotnet_last_dll_path"] = vim.g.get_dll()
+--     end
+--   end
+--
+--   return vim.g["dotnet_last_dll_path"]
+-- end
+--
+-- local config = {
+--   {
+--     type = "coreclr",
+--     name = "Launch - netcoredbg",
+--     request = "launch",
+--     env = "ASPNETCORE_ENVIRONMENT=Development",
+--     args = {
+--       "/p:EnvironmentName=Development",
+--       "--urls=http://localhost:5002",
+--       "--environment=Development",
+--     },
+--     program = function()
+--       if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then vim.g.dotnet_build_project() end
+--       return vim.g.dotnet_get_dll_path()
+--     end,
+--   },
+-- }
+--
+-- dap.configurations.cs = require"astro"
+-- dap.configurations.fsharp = config
+
+return {}

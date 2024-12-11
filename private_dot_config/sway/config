@@ -293,6 +293,11 @@ set $secondary_text_color #908caa
 gaps inner 10
 gaps outer 5
 
+default_border none
+default_floating_border none
+
+for_window [class="^.*"] border none
+
 # Match Firefox Picture-in-Picture windows
 for_window [title="^Picture-in-Picture$"] floating enable, sticky enable, border none
 for_window [title="^Picture in picture$"] floating enable, sticky enable, border none
