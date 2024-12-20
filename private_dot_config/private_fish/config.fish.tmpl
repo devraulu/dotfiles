@@ -20,6 +20,7 @@ load_nvm > /dev/stderr
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export SUDOEDIT='/opt/homebrew/bin/nvim'
 export EDITOR='/opt/homebrew/bin/nvim'
+export TERM='xterm-256color'
 
 {{ else if eq .chezmoi.os "linux" -}}
 

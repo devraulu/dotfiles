@@ -9,19 +9,36 @@ set -g prefix m-w
 set -g prefix2 c-'\'
 bind m-'\' send-prefix
 
-set -g default-terminal "tmux-256color"
+## set -g default-terminal "tmux-256color"
 
 set -g history-limit 100000
 
+set -g @continuum-restore 'on'
+set -g @continuum-save-interval '5'
 
-
-# if "test ! -d ~/.tmux/plugins/tpm" \
-#    "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
+## if "test ! -d ~/.tmux/plugins/tpm" \
+## "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
 
 set-option -a terminal-features 'kitty:RGB'
 
 # Clipboard
 set -s set-clipboard on
+
+{{ if eq .chezmoi.os "darwin" -}}
+
+set -s copy-command 'pbcopy'
+
+bind -T copy-mode C-c send -X copy-pipe-no-clear "pbcopy"
+bind -T copy-mode-vi C-c send -X copy-pipe-no-clear "pbcopy"
+
+bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "pbcopy"
+bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "pbcopy"
+
+bind C-c run "tmux save-buffer - | pbcopy"
+bind C-v run "pbpaste | tmux load-buffer - && tmux paste-buffer"
+
+{{ else if eq .chezmoi.os "linux" -}}
+
 set -s copy-command 'wl-copy'
 
 bind -T copy-mode C-c send -X copy-pipe-no-clear "wl-copy"
@@ -29,6 +46,11 @@ bind -T copy-mode-vi C-c send -X copy-pipe-no-clear "wl-copy"
 
 bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "wl-copy"
 bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "wl-copy"
+
+bind C-c run "tmux save-buffer - | xsel -i -b"
+bind C-v run "tmux set-buffer \"$(xsel -o -b)\"; tmux paste-buffer"
+
+{{ end -}}
 
 set -sg escape-time 1
 set -g base-index 1
@@ -39,9 +61,6 @@ set -g mouse on
 
 setw -g monitor-activity on
 set -g visual-activity on
-
-bind C-c run "tmux save-buffer - | xsel -i -b"
-bind C-v run "tmux set-buffer \"$(xsel -o -b)\"; tmux paste-buffer"
 
 # easy-to-remember split pane commands
 bind | split-window -h
@@ -69,11 +88,6 @@ set -g @minimal-tmux-status "top"
 
 set -g renumber-windows on
 
-# # Kanagawa
-# set -g @plugin 'Nybkox/tmux-kanagawa'
-# set -g @kanagawa-theme 'dragon'
-
-# set -g @plugin 'niksingh710/minimal-tmux-status'
 # List of plugins
 set -g @tpm_plugins '               \
    tmux-plugins/tpm                 \
@@ -85,9 +99,6 @@ set -g @tpm_plugins '               \
    tmux-plugins/tmux-continuum      \
    niksingh710/minimal-tmux-status  \
 '
-
-set -g @continuum-restore 'on'
-set -g @continuum-save-interval '5'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'

@@ -1,29 +1,41 @@
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/home/solo/.zsh/completions:"* ]]; then export FPATH="/home/solo/.zsh/completions:$FPATH"; fi
-
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 fpath+=${CUSTOM_ZSH_COMPLETIONS:-~}/completions
 
-{{ if eq .chezmoi.os "darwin" -}}
-  source $HOME/antigen.zsh
-  antigen theme lambda
-{{ else if eq .chezmoi.os "linux" -}}
+{{ if eq .chezmoi.os "linux" -}}
   source /usr/share/antigen.zsh
   antigen theme ~/.antigen/themes lambda.zsh-theme
 {{ end -}}
 
-export ANTIGEN_LOG=~/antigen.log
+## export ANTIGEN_LOG=~/antigen.log
+##
+## antigen use oh-my-zsh
+##
+## antigen bundle git
+## antigen bundle vi-mode
+## antigen bundle tmux
+## antigen bundle zsh-users/zsh-autosuggestions
+## antigen bundle zsh-users/zsh-syntax-highlighting
+## antigen bundle Aloxaf/fzf-tab
+##
+## antigen apply
 
-antigen use oh-my-zsh
+source "${HOME}/.zgen/zgen.zsh"
 
-antigen bundle git
-antigen bundle vi-mode
-antigen bundle tmux
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle Aloxaf/fzf-tab
+if ! zgen saved; then
 
-antigen apply
+  # specify plugins here
+  zgen oh-my-zsh
+  zgen oh-my-zsh plugins/git
+  zgen oh-my-zsh plugins/vi-mode
+  zgen oh-my-zsh plugins/tmux
+  zgen load zsh-users/zsh-autosuggestions
+  zgen load zsh-users/zsh-syntax-highlighting
+  zgen load Aloxaf/fzf-tab
+  zgen oh-my-zsh themes/lambda
+
+  # generate the init script from plugins above
+  zgen save
+fi
 
 
 export MANPATH="/usr/local/man:$MANPATH"
@@ -79,6 +91,8 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
+
+
 alias z="zi"
 
 alias rcp="rsync -a --info=progress2"
@@ -96,7 +110,7 @@ esac
 export TMUX_TMPDIR="/var/tmp"
 
 export PATH=$HOME/.dotnet/tools:$PATH
-export PATH=$HOME/flutter/bin:$PATH
+export PATH=$HOME/bin/flutter/bin:$PATH
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-17.0.13.0.11-1.fc41.x86_64
 export PATH=$JAVA_HOME:$PATH
 
@@ -105,10 +119,16 @@ export PATH=$JAVA_HOME:$PATH
 export SUDOEDIT='/opt/homebrew/bin/nvim'
 export EDITOR='/opt/homebrew/bin/nvim'
 
-if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
-  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
-  export PATH=`gem environment gemdir`/bin:$PATH
-fi
+## if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+##   export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+##   export PATH=`gem environment gemdir`/bin:$PATH
+## fi
+
+ export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+eval "$(rbenv init - zsh)"
 
 {{ else if eq .chezmoi.os "linux" -}}
 
