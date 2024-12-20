@@ -1,7 +1,7 @@
 lastupdatecheck: 0
 recentrepos:
-    - /home/solo/.local/share/chezmoi
     - /home/solo/work/thenetnook/asklepius/app
+    - /home/solo/.local/share/chezmoi
     - /home/solo/work/thenetnook/asklepius/asklepius.api
     - /home/solo/Downloads
     - /home/solo/development/rust/advent-of-code/day-3

@@ -38,7 +38,7 @@ return {
   { import = "astrocommunity.pack.mdx" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.astro" },
-  { import = "astrocommunity.pack.dart" },
+  -- { import = "astrocommunity.pack.dart" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.full-dadbod" },
   { import = "astrocommunity.pack.json" },
