@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+TMUX_SESSIONS=$(tmux list-sessions)
+NO_SESSIONS=$(echo "${TMUX_SESSIONS}" | wc -l)
+
+if [ "${NO_SESSIONS}" -ge 2 ]; then
+  tmux attach-session -t \
+    "$(echo "${TMUX_SESSIONS}" | sk --ansi --prompt="Select a session to attach to > " | awk '{print $1}')"
+else
+  tmux attach-session
+fi

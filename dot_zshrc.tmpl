@@ -1,24 +1,3 @@
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-fpath+=${CUSTOM_ZSH_COMPLETIONS:-~}/completions
-
-## {{ if eq .chezmoi.os "linux" -}}
-##   source /usr/share/antigen.zsh
-##   antigen theme ~/.antigen/themes lambda.zsh-theme
-## {{ end -}}
-
-## export ANTIGEN_LOG=~/antigen.log
-##
-## antigen use oh-my-zsh
-##
-## antigen bundle git
-## antigen bundle vi-mode
-## antigen bundle tmux
-## antigen bundle zsh-users/zsh-autosuggestions
-## antigen bundle zsh-users/zsh-syntax-highlighting
-## antigen bundle Aloxaf/fzf-tab
-##
-## antigen apply
-
 source "${HOME}/.zgen/zgen.zsh"
 
 if ! zgen saved; then
@@ -37,6 +16,10 @@ if ! zgen saved; then
   zgen save
 fi
 
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+fpath+=${CUSTOM_ZSH_COMPLETIONS:-~/.zsh}/completion
+
+autoload -Uz compinit && compinit -i
 
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -156,3 +139,5 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export TERM="kitty"
 
 {{ end -}}
+
+alias ta="tmux-attach"
