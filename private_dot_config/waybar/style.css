@@ -1,6 +1,6 @@
 * {
-  font-family: "GeistMono NF", monospace;
-  font-size: 13px;
+  font-family: "MartianMono NF", monospace;
+  font-size: 12px;
 }
 
 window#waybar {
@@ -74,11 +74,13 @@ button {
 }
 
 #mode {
-  color: #ebbcba;
+  color: #f6c177;
   padding: 0 0.8em;
   font-weight: 800;
-  border: 2px solid #ebbcba;
+  font-size: 0.8em;
+  border: 2.5px solid #f6c177;
   border-radius: 20px;
+  background-color: #191724;
 }
 
 #clock,

@@ -94,6 +94,6 @@ return {
     }
 
     opts.section.header.val = mikasa
-    opts.section.header.opts.hl = "Character"
+    opts.section.header.opts.hl = "Macro"
   end,
 }

@@ -1,48 +1,18 @@
-$base: #191724;
-$surface: #1f1d2e;
-$overlay: #26233a;
-$muted: #6e6a86;
-$subtle: #908caa;
-$text: #e0def4;
-$love: #eb6f92;
-$gold: #f6c177;
-$rose: #ebbcba;
-$pine: #31748f;
-$foam: #9ccfd8;
-$iris: #c4a7e7;
-$highlight-low: #21202e;
-$highlight-med: #403d52;
-$highlight-high: #524f67;
-
-// $base: #faf4ed;
-// $surface: #fffaf3;
-// $overlay: #f2e9e1;
-// $muted: #9893a5;
-// $subtle: #797593;
-// $text: #575279;
-// $love: #b4637a;
-// $gold: #ea9d34;
-// $rose: #d7827e;
-// $pine: #286983;
-// $foam: #56949f;
-// $iris: #907aa9;
-// $highlight-low: #f4ede8;
-// $highlight-med: #dfdad9;
-// $highlight-high: #cecacd;
+@use "theme";
 
 $extreme-radius: 20px;
 
 * {
-  font-family: "GeistMono NF", monospace;
-  font-size: 13px;
+  font-family: "MartianMono NF", monospace;
+  font-size: 12px;
 }
 
 window#waybar {
   margin-top: 10px;
-  background-color: rgba($base, 0);
+  background-color: rgba(theme.$base, 0);
   border-radius: $extreme-radius;
   padding-right: 200px;
-  color: $text;
+  color: theme.$text;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
@@ -78,13 +48,13 @@ button {
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-  // background: inherit;
-  // box-shadow: inset 0 -3px #ffffff;
-}
+// button:hover {
+// background: inherit;
+// box-shadow: inset 0 -3px #ffffff;
+// }
 
 #workspaces {
-  background-color: $base;
+  background-color: theme.$base;
   border-radius: $extreme-radius;
   padding: 0 0.5em;
 
@@ -95,7 +65,7 @@ button:hover {
     min-height: 1.5em;
     font-size: 1.2em;
     background-color: #04aa6d;
-    color: $text;
+    color: theme.$text;
     border: none;
     background-color: transparent;
     font-weight: 900;
@@ -104,28 +74,30 @@ button:hover {
       color 0.3s ease;
 
     &:hover {
-      background: $muted;
+      background: theme.$muted;
     }
     &.focused {
-      background-color: $foam;
-      color: $base;
+      background-color: theme.$foam;
+      color: theme.$base;
       // border: 2px solid $iris;
       // box-shadow: inset 0 -3px #ffffff;
       border-radius: 50%;
     }
 
     &.urgent {
-      color: $love;
+      color: theme.$love;
     }
   }
 }
 
 #mode {
-  color: $rose;
+  color: theme.$gold;
   padding: 0 0.8em;
   font-weight: 800;
-  border: 2px solid $rose;
+  font-size: 0.8em;
+  border: 2.5px solid theme.$gold;
   border-radius: $extreme-radius;
+  background-color: theme.$base;
 }
 
 #clock,
@@ -146,9 +118,9 @@ button:hover {
 #mpd,
 #language {
   padding: 0 10px;
-  color: $text;
+  color: theme.$text;
   font-weight: 600;
-  background-color: $surface;
+  background-color: theme.$surface;
   border-radius: $extreme-radius;
   padding: 0 1em;
 }
@@ -169,8 +141,8 @@ button:hover {
 }
 
 #clock {
-  background-color: $base;
-  color: $iris;
+  background-color: theme.$base;
+  color: theme.$iris;
   font-size: 1.2rem;
   font-weight: 900;
 }
@@ -228,13 +200,13 @@ label:focus {
 }
 
 #cpu {
-  background-color: $base;
-  color: $text;
+  background-color: theme.$base;
+  color: theme.$text;
 }
 
 #memory {
-  background-color: $base;
-  color: $text;
+  background-color: theme.$base;
+  color: theme.$text;
 }
 
 #disk {
@@ -246,23 +218,23 @@ label:focus {
 }
 
 #network {
-  background-color: $pine;
-  color: $text;
+  background-color: theme.$pine;
+  color: theme.$text;
 }
 
 #network.disconnected {
-  background-color: $base;
-  color: $gold;
+  background-color: theme.$base;
+  color: theme.$gold;
 }
 
 #pulseaudio {
-  background-color: $foam;
-  color: $base;
+  background-color: theme.$foam;
+  color: theme.$base;
 }
 
 #pulseaudio.muted {
-  background-color: $highlight-low;
-  color: $love;
+  background-color: theme.$highlight-low;
+  color: theme.$love;
 }
 
 #wireplumber {
@@ -289,12 +261,12 @@ label:focus {
 }
 
 #temperature {
-  background-color: $gold;
-  color: $base;
+  background-color: theme.$gold;
+  color: theme.$base;
 }
 
 #temperature.critical {
-  background-color: $love;
+  background-color: theme.$love;
 }
 
 #tray {
@@ -307,20 +279,20 @@ label:focus {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
-  background-color: $love;
+  background-color: theme.$love;
 }
 
 #idle_inhibitor {
   padding: 0 0.8em;
-  background-color: $base;
+  background-color: theme.$base;
   font-size: 1em;
   border-radius: 50px;
-  color: $text;
+  color: theme.$text;
 }
 
 #idle_inhibitor.activated {
-  background-color: $text;
-  color: $pine;
+  background-color: theme.$text;
+  color: theme.$pine;
 }
 
 #mpd {
@@ -341,8 +313,8 @@ label:focus {
 }
 
 #language {
-  background: $iris;
-  color: $base;
+  background: theme.$iris;
+  color: theme.$base;
   font-size: 0.9rem;
   min-width: 58px;
 }
@@ -364,7 +336,7 @@ label:focus {
 }
 
 #scratchpad {
-  background-color: $base;
+  background-color: theme.$base;
   font-weight: 900;
 }
 
@@ -382,13 +354,13 @@ label:focus {
 }
 
 #privacy-item.screenshare {
-  background-color: $gold;
+  background-color: theme.$gold;
 }
 
 #privacy-item.audio-in {
-  background-color: $foam;
+  background-color: theme.$foam;
 }
 
 #privacy-item.audio-out {
-  background-color: $pine;
+  background-color: theme.$pine;
 }

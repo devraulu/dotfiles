@@ -60,7 +60,6 @@ return {
   { import = "astrocommunity.recipes.disable-tabline" },
   -- { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   --
-
   { import = "astrocommunity.recipes.telescope-nvchad-theme" },
   { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
   { import = "astrocommunity.recipes.vscode" },
@@ -68,4 +67,5 @@ return {
   { import = "astrocommunity.register.nvim-neoclip-lua" },
   { import = "astrocommunity.split-and-window.windows-nvim" },
   { import = "astrocommunity.utility.lua-json5" },
+  { import = "astrocommunity.color.modes-nvim" },
 }
