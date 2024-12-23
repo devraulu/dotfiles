@@ -26,15 +26,7 @@ set $rofi_cmd rofi \
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show combi -combi-modes 'window,drun' -modes combi
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# Requires: desktop-backgrounds-compat, swaybg
-output * bg /home/solo/wallpapers/Rosa_Bonheur,_The_Horse_Fair,_1852–55.jpg fill
 
-font pango:Inter Bold 10
-
-#
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -88,7 +80,7 @@ font pango:Inter Bold 10
     bindsym $mod+c exec copyq menu 
 
     # Flameshot
-    bindsym $mod+Mod1+p exec flameshot gui
+    bindsym $mod+Mod1+p exec grim -g "$(slurp)" - | swappy -f -
     bindsym $mod+Shift+p exec flameshot gui --raw | tesseract stdin stdout | wl-copy
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -238,7 +230,6 @@ bindsym $mod+r mode "resize"
 # the trick, it's all in the `wordexp(3)`.
 #
 
-
 bindsym $mod+Shift+r reload
 
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
@@ -258,46 +249,6 @@ mode "$mode_system" {
 }
 bindsym $mod+Ctrl+p mode "$mode_system"
 
-
-# set $primary_bg #6f6770
-# set $secondary_bg #1e1e2e
-# set $tertiary_bg #3c383d
-# set $text_color #cdd6f4
-# set $secondary_text_color #f2cdcd
-#
-# # class                   border  backgr. text    indic.   child_border
-#   client.focused          $primary_bg $primary_bg  $text_color #FDF6E3
-#   client.focused_inactive $secondary_bg $secondary_bg $secondary_text_color #454948
-#   client.unfocused        $tertiary_bg $tertiary_bg $secondary_text_color #454948
-#   client.urgent           #FDF6E3 #FF4500 #1b1d1e #268BD2
-#   client.placeholder      #000000 #0c0c0c #ffffff #000000 
-#
-#   client.background       #2B2C2B
-
-set $primary_bg #191724     
-set $secondary_bg #1f1d2e  
-set $tertiary_bg #26232966
-set $text_color #e0def4
-set $secondary_text_color #908caa
-
-# class                   border          backgr.         text                 indic.   child_border
-  client.focused          $primary_bg     $primary_bg     $text_color          #524f67
-  client.focused_inactive $secondary_bg   $secondary_bg   $secondary_text_color #403d52
-  client.unfocused        $tertiary_bg    $tertiary_bg    $secondary_text_color #403d52
-  client.urgent           #eb6f92         #eb6f92         $text_color          #eb6f92
-  client.placeholder      #191724         #1f1d2e         $text_color          #191724
-
-  client.background       #191724
-
-
-gaps inner 10
-gaps outer 5
-
-default_border none
-default_floating_border none
-
-for_window [class="^.*"] border none
-
 # Match Firefox Picture-in-Picture windows
 for_window [title="^Picture-in-Picture$"] floating enable, sticky enable, border none
 for_window [title="^Picture in picture$"] floating enable, sticky enable, border none
@@ -307,5 +258,7 @@ for_window [app_id="com.github.hluk.copyq"] floating enable, sticky enable, bord
 for_window [app_id="pomodorolm"] floating enable, sticky enable, border none
 for_window [title="Emulator"] floating enable, sticky enable, border none
 
-
-include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+# include '/etc/sway/config.d/*.conf'
+# include '$XDG_CONFIG_HOME/sway/config.d/*.conf'
+# include '$HOME/.config/sway/config.d/*.conf'
+include '$(/usr/libexec/sway/layered-include "/etc/sway/config.d/*.conf" "$HOME/.config/sway/config.d/*.conf")'
