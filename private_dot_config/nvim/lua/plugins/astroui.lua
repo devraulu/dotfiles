@@ -16,13 +16,13 @@ return {
     ---@type AstroUIOpts
     opts = {
       -- change colorscheme
-      -- colorscheme = "rose-pine-moon",
+      colorscheme = "rose-pine",
       -- colorscheme = "dogrun",
       -- colorscheme = "everforest",
       -- colorscheme = "poimandres",
       -- colorscheme = "catppuccin-macchiato",
       -- colorscheme = "dracula",
-      colorscheme = "mellifluous",
+      -- colorscheme = "mellifluous",
       -- colorscheme = "gruvbox",
       -- colorscheme = "night-owl",
       -- colorscheme = "iceberg",
