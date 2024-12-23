@@ -81,10 +81,11 @@ alias z="zi"
 
 alias rcp="rsync -a --info=progress2"
 
-export PATH="$PATH:/home/solo/.local/bin"
+# local
+export PATH="$PATH:$HOME/.local/bin"
 
 # pnpm
-export PNPM_HOME="$HOME/solo/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
